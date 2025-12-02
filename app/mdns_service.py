@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-mDNS Service Advertiser & Discovery for Health Monitoring System
+mDNS Service Advertiser & Discovery for VitaBand Health Monitoring System
 
 Advertises the health monitoring service on the local network
 so mobile apps can automatically discover it.
@@ -16,7 +16,7 @@ from zeroconf import (
 
 
 # ============================================================
-# Utility helpers
+# Utility helping functions
 # ============================================================
 
 def safe_decode(value):
@@ -52,7 +52,7 @@ class HealthMonitorService:
 
     SERVICE_TYPE = "_mqtt._tcp.local."
 
-    def __init__(self, service_name="Health Monitor", port=1883):
+    def __init__(self, service_name="VitaBand", port=1883):
         self.service_name = service_name
         self.port = port
         self.zeroconf = None
