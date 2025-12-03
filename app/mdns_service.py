@@ -15,9 +15,7 @@ from zeroconf import (
 )
 
 
-# ============================================================
 # Utility helping functions
-# ============================================================
 
 def safe_decode(value):
     """Decode bytes → string safely."""
@@ -41,9 +39,7 @@ def get_local_ip():
         return "127.0.0.1"
 
 
-# ============================================================
 # Advertiser
-# ============================================================
 
 class HealthMonitorService:
     """
@@ -120,9 +116,7 @@ class HealthMonitorService:
             print(f"[ERROR] Failed to stop service: {e}")
 
 
-# ============================================================
 # Discovery Listener (Modern API)
-# ============================================================
 
 class MDNSListener:
     """Handles added/removed/updated services."""
@@ -165,12 +159,10 @@ class MDNSListener:
         pass
 
 
-# ============================================================
 # Discovery Tool
-# ============================================================
 
 class ServiceDiscovery:
-    """Discovers health monitoring services via mDNS."""
+    """Discovers VitaBand services via mDNS."""
 
     SERVICE_TYPE = "_mqtt._tcp.local."
 
@@ -209,9 +201,7 @@ class ServiceDiscovery:
         return self.discovered_services
 
 
-# ============================================================
 # Test Tools (Advertiser & Discovery)
-# ============================================================
 
 def test_mdns_advertiser():
     print("=" * 70)
@@ -252,9 +242,7 @@ def test_mdns_discovery():
         print("Make sure the advertiser is running on local network.\n")
 
 
-# ============================================================
 # Main
-# ============================================================
 
 if __name__ == "__main__":
     import sys

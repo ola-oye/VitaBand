@@ -1,0 +1,66 @@
+version: '3.8'
+
+services:
+  vitaband:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: vitaband
+    hostname: vitaband
+    
+    # Restart policy
+    restart: unless-stopped
+    
+    # Network mode for mDNS (host network required)
+    network_mode: host
+    
+    # Privileged mode for hardware access (I2C sensors)
+    privileged: true
+    
+    # Device access for I2C
+    devices:
+      - /dev/i2c-1:/dev/i2c-1
+    
+    # Environment variables
+    environment:
+      - PYTHONUNBUFFERED=1
+      - MQTT_BROKER=localhost
+      - MQTT_PORT=1883
+      - LOG_LEVEL=INFO
+    
+    # Volumes for persistent data
+    volumes:
+      # Data persistence
+      - ./data:/app/data
+      - ./logs:/app/logs
+      - ./models:/app/models
+      
+      # CSV output
+      - ./output:/app/output
+      
+      # Mosquitto data
+      - mosquitto-data:/var/lib/mosquitto
+      
+      # Development: Mount code for live updates (comment out in production)
+      # - ./src:/app/src
+      # - ./*.py:/app/
+    
+    # Logging
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "10m"
+        max-file: "3"
+    
+    # Health check
+    healthcheck:
+      test: ["CMD", "mosquitto_sub", "-h", "localhost", "-t", "health/heartbeat", "-C", "1", "-W", "5"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 40s
+
+# Named volumes
+volumes:
+  mosquitto-data:
+    driver: local

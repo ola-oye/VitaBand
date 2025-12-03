@@ -484,7 +484,7 @@ def main():
         sys.exit(1)
 
     # create log filename with timestamp
-    log_file = f"activity_log_{datetime.utcnow().strftime('%Y%m%d_%H%M%SZ')}.csv"
+    log_file = f"data/activity_log_{datetime.utcnow().strftime('%Y%m%d_%H%M%SZ')}.csv"
 
     try:
         # default poll interval 5 seconds (you can change this)

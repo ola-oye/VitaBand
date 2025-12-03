@@ -47,7 +47,7 @@ class HealthMQTTPublisher:
         if username and password:
             self.client.username_pw_set(username, password)
 
-        # TLS security (optional)
+        # TLS security
         if use_tls:
             self.client.tls_set()
 
@@ -62,7 +62,7 @@ class HealthMQTTPublisher:
             "recommendation": "health/recommendation",
             "sensor_data": "health/sensors",
             "alerts": "health/alerts",
-            # "heartbeat": "health/heartbeat",
+            "heartbeat": "health/heartbeat",
         }
 
         print(f"[INIT] MQTT Publisher initialized (Client ID: {client_id})")
@@ -217,18 +217,18 @@ class HealthMQTTPublisher:
     # HEARTBEAT
     # -----------------------------------------------------
 
-    # def publish_heartbeat(self):
-    #     """Publish retained heartbeat for monitoring dashboards"""
+    def publish_heartbeat(self):
+        """Publish retained heartbeat for monitoring dashboards"""
 
-    #     if not self.connected:
-    #         return
+        if not self.connected:
+            return
 
-    #     heartbeat_msg = {
-    #         "timestamp": datetime.utcnow().isoformat() + "Z",
-    #         "status": "alive",
-    #     }
+        heartbeat_msg = {
+            "timestamp": datetime.utcnow().isoformat() + "Z",
+            "status": "alive",
+        }
 
-    #     self._publish(self.topics["heartbeat"], heartbeat_msg, retain=True)
+        self._publish(self.topics["heartbeat"], heartbeat_msg, retain=True)
 
     # -----------------------------------------------------
     # CALLBACKS
