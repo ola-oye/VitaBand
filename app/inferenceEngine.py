@@ -11,7 +11,6 @@ This version:
 - Uses ISO8601 UTC timestamps
 - Configurable polling interval (default 5 seconds)
 """
-
 import sys
 import os
 import time

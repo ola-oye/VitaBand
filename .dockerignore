@@ -2,6 +2,7 @@
 .git
 .gitignore
 .gitattributes
+.github
 
 # Python
 __pycache__
@@ -15,6 +16,7 @@ ENV/
 *.egg-info/
 dist/
 build/
+.pytest_cache/
 
 # IDE
 .vscode/
@@ -22,23 +24,27 @@ build/
 *.swp
 *.swo
 *~
+.DS_Store
 
-# Docker
-Dockerfile
-docker-compose.yml
+# Docker (don't copy Docker files into image context)
+docker/Dockerfile
+docker/docker-compose.yml
+docker/.dockerignore
+docker/build.sh
+docker/run.sh
 .dockerignore
 
 # Documentation
 README.md
 *.md
-docs/
+!docker/DOCKER_README.md
 
 # Data files (unless needed)
-*.csv
-*.log
 data/
 logs/
 output/
+*.csv
+*.log
 
 # Jupyter notebooks
 *.ipynb
@@ -52,3 +58,25 @@ Thumbs.db
 test_*.py
 *_test.py
 tests/
+pytest.ini
+
+ Large datasets
+data/*.csv
+data/.gitkeep
+
+# Temporary files
+tmp/
+temp/
+*.tmp
+
+# Scripts (not needed in container)
+scripts/
+setup_*.sh
+install_*.sh
+
+# Mosquitto specific
+mosquitto-data/
+*.pid
+
+# Avahi specific
+/var/run/avahi-daemon/

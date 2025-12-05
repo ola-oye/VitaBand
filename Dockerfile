@@ -2,7 +2,7 @@
 
 
 # Stage 1: Base Image with Python and System Dependencies
-FROM python:3.9-slim-bullseye as base
+FROM python:3.12-slim-bullseye as base
 
 # Set environment variables
 ENV PYTHONUNBUFFERED=1 \
@@ -12,6 +12,7 @@ ENV PYTHONUNBUFFERED=1 \
 
 # Install system dependencies
 RUN apt-get update && apt-get install -y --no-install-recommends \
+    ca-certificates \
     # MQTT Broker
     mosquitto \
     mosquitto-clients \
@@ -19,6 +20,7 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     avahi-daemon \
     avahi-utils \
     dbus \
+    libnss-mdns \
     # I2C tools for sensors
     i2c-tools \
     # Python development
@@ -27,6 +29,9 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     # Network tools (for debugging)
     iputils-ping \
     net-tools \
+    iproute2 \
+    # Process management tools
+    procps \
     # Clean up
     && apt-get clean \
     && rm -rf /var/lib/apt/lists/*
@@ -35,8 +40,8 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
 # Stage 2: Python Dependencies
 FROM base as dependencies
 
-# Create app directory
-WORKDIR /app
+# Create tmp_install directory
+WORKDIR /tmp_install
 # Copy requirements file
 COPY requirements.txt .
 # Install Python packages
@@ -48,31 +53,50 @@ RUN pip install --upgrade pip && \
 FROM base as final
 
 # Copy Python packages from dependencies stage
-COPY --from=dependencies /usr/local/lib/python3.9/site-packages /usr/local/lib/python3.9/site-packages
+COPY --from=dependencies /usr/local/lib/python3.12/site-packages /usr/local/lib/python3.12/site-packages
 COPY --from=dependencies /usr/local/bin /usr/local/bin
 
 # Create app directory
 WORKDIR /app
 
-# Create directories for data and logs
-RUN mkdir -p /app/data /app/logs /app/models
-
+# Create necessary directories
+RUN mkdir -p /app/data \
+             /app/logs \
+             /app/output \
+             /app/model \
+             /app/config \
+             /var/run/dbus \
+             /var/run/avahi-daemon \
+             /var/lib/mosquitto \
+             /etc/mosquitto/conf.d
 # Copy application code
-COPY *.py ./
+COPY app/ ./app/
+COPY model/ ./model/
 COPY sensors/ ./sensors/
-
-# Copy models (if they exist)
-COPY *.pkl ./models/ 2>/dev/null || true
+COPY config/ ./config/
+# Copy requirements file for reference
+COPY requirements.txt .
 
 # Copy configuration files
+COPY docker-entrypoint.sh /usr/local/bin/docker-entrypoint.sh
 COPY mosquitto.conf /etc/mosquitto/conf.d/custom.conf
-COPY avahi-daemon.conf /etc/avahi/avahi-daemon.conf 2>/dev/null || true
+COPY avahi-daemon.conf /etc/avahi/avahi-daemon.conf
+COPY mqtt.service /etc/avahi/services/mqtt.service
+
 
 # Set permissions
-RUN chmod +x *.py
+RUN chmod +x /usr/local/bin/docker-entrypoint.sh && \
+    chmod 644 /etc/mosquitto/conf.d/custom.conf && \
+    chmod 644 /etc/avahi/avahi-daemon.conf && \
+    chmod 644 /etc/avahi/services/mqtt.service && \
+    chown -R mosquitto:mosquitto /var/lib/mosquitto && \
+    mkdir -p /var/log/mosquitto && \
+    chown mosquitto:mosquitto /var/log/mosquitto
 
 # Expose ports
-EXPOSE 1883   
+EXPOSE 1883
+EXPOSE 8883
+EXPOSE 9001
 EXPOSE 5353/udp   
 
 # Health check
@@ -82,13 +106,8 @@ HEALTHCHECK --interval=30s --timeout=10s --start-period=40s --retries=3 \
 #     CMD mosquitto_sub -h localhost -t 'health/heartbeat' -C 1 -W 360 || exit 1
 
 
-
-# Create startup script
-COPY docker-entrypoint.sh /usr/local/bin/
-RUN chmod +x /usr/local/bin/docker-entrypoint.sh
-
 # Set entrypoint
 ENTRYPOINT ["/usr/local/bin/docker-entrypoint.sh"]
 
 # Default command
-CMD ["python3", "inferenceEngine.py"]
+CMD ["python3", "app/inferenceEngine.py"]

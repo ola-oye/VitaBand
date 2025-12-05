@@ -71,24 +71,26 @@ docker run -d \
 
 ## 📁 Project Structure
 
-```
-vitaband/
-├── Dockerfile                 # Docker image definition
-├── docker-compose.yml         # Docker Compose configuration
-├── docker-entrypoint.sh       # Container startup script
-├── requirements.txt           # Python dependencies
-├── mosquitto.conf             # MQTT broker config
-├── .dockerignore             # Files to exclude from image
-├── build.sh                  # Build script
-├── run.sh                    # Run script
-│
-├── *.py                      # Python application files
-├── src/                      # Sensor scripts
-├── models/                   # ML models (*.pkl)
-│
-├── data/                     # Persistent data (mounted)
-├── logs/                     # Log files (mounted)
-└── output/                   # CSV outputs (mounted)
+project/
+├── docker/
+│   ├── Dockerfile
+│   ├── docker-compose.yml
+│   ├── docker-entrypoint.sh
+│   ├── mosquitto.conf
+│   ├── avahi-daemon.conf
+│   ├── mqtt.service
+│   ├── build.sh
+│   └── run.sh
+├── app/
+│   ├── inferenceEngine.py
+│   ├── mqtt_publisher.py
+│   ├── sensor_manager.py
+│   └── sensors/
+├── models/
+│   ├── rf_model.pkl
+│   └── scaler.pkl
+└── config/
+    └── mqtt_config.py
 ```
 
 ---
@@ -113,7 +115,7 @@ environment:
 volumes:
   - ./data:/app/data          # Application data
   - ./logs:/app/logs          # Log files
-  - ./models:/app/models      # ML models
+  - ./model:/app/model      # ML models
   - ./output:/app/output      # CSV outputs
 ```
 
