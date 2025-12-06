@@ -1,0 +1,36 @@
+<?xml version="1.0" standalone='no'?>
+<!DOCTYPE service-group SYSTEM "avahi-service.dtd">
+<!--
+  Avahi Service Advertisement for VitaBand Health Monitoring MQTT Broker
+  This file tells mDNS clients about our MQTT service
+-->
+<service-group>
+  <!-- Service name (%h is replaced with hostname) -->
+  <name replace-wildcards="yes">Health Monitor on %h</name>
+  
+  <!-- MQTT Service Definition -->
+  <service>
+    <!-- Service type: MQTT over TCP -->
+    <type>_mqtt._tcp</type>
+    
+    <!-- MQTT broker port -->
+    <port>1883</port>
+    
+    <!-- Service metadata (TXT records) -->
+    <!-- These help mobile apps identify and filter services -->
+    <txt-record>version=1.0</txt-record>
+    <txt-record>service=health-monitoring</txt-record>
+    <txt-record>description=Real-time health and activity monitoring</txt-record>
+    <txt-record>protocol=mqtt</txt-record>
+    <txt-record>qos=2</txt-record>
+  </service>
+  
+  <!-- Optional: WebSocket endpoint (if enabled in Mosquitto) -->
+  <!--
+  <service>
+    <type>_mqtt._tcp</type>
+    <port>9001</port>
+    <txt-record>protocol=websocket</txt-record>
+  </service>
+  -->
+</service-group>

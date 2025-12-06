@@ -11,7 +11,6 @@ This version:
 - Uses ISO8601 UTC timestamps
 - Configurable polling interval (default 5 seconds)
 """
-
 import sys
 import os
 import time
@@ -104,7 +103,7 @@ class ActivityMonitor:
             print(f"   ✗ Error initializing RecommendationEngine: {e}")
             raise
 
-        # MQTT publisher (optional)
+        # MQTT publisher
         self.mqtt_publisher = None
         if mqtt_enabled and HealthMQTTPublisher is not None:
             print("\n4) Initializing MQTT publisher...")
@@ -121,12 +120,12 @@ class ActivityMonitor:
         else:
             print("\n4) MQTT publishing disabled")
 
-        # mDNS service (optional)
+        # mDNS service
         self.mdns_service = None
         if mdns_enabled and HealthMonitorService is not None:
             print("\n5) Initializing mDNS service...")
             try:
-                self.mdns_service = HealthMonitorService(service_name="Health Monitor", port=1883)
+                self.mdns_service = HealthMonitorService(service_name="VitaBand", port=1883)
                 started = False
                 try:
                     started = self.mdns_service.start()
@@ -210,7 +209,7 @@ class ActivityMonitor:
 
     def predict(self, sensor_data: Dict[str, Any]) -> Dict[str, Any]:
         """
-        Use the loaded model to predict labels from sensor_data.
+        Using the model to predict labels from sensor_data.
 
         This function supports:
          - Multi-output/multi-label models that return an array per sample
@@ -247,8 +246,8 @@ class ActivityMonitor:
             # not numpy array (scalar)
             preds = np.array([raw_pred])
 
-        # For many multi-label models predictions are {0,1}. But some models may return probabilities.
-        # If values are floats between 0 and 1, apply 0.5 threshold.
+        # For many multi-label models predictions are {0,1}. But the models may return probabilities.
+        # If values are floats between 0 and 1, 0.5 threshold is applied.
         try:
             preds_float = preds.astype(float)
             if np.any((preds_float >= 0.0) & (preds_float <= 1.0)):
@@ -296,11 +295,10 @@ class ActivityMonitor:
 
         return result
 
-    # -----------------------
+    
     # Display / Logging / Publish
-    # -----------------------
     def display_result(self, result: Dict[str, Any]) -> None:
-        """Print a human-friendly summary to the console."""
+        """Printing a human-friendly summary to the console."""
         print("\n" + "=" * 70)
         print(f"MONITORING UPDATE - {result['timestamp']}")
         print("=" * 70)
@@ -319,12 +317,7 @@ class ActivityMonitor:
         print(f"\nDETECTED STATES ({result['num_active']}):")
         if result["active_labels"]:
             for label in result["active_labels"]:
-                if label.lower() in ["critical", "warning"]:
-                    print(f"  ⚠️  {label}")
-                elif label.lower() in ["healthy", "normal", "resting"]:
-                    print(f"  ✅ {label}")
-                else:
-                    print(f"  🔵 {label}")
+               print(f"  🔵 {label}")
         else:
             print("  (No states detected)")
 
@@ -490,7 +483,7 @@ def main():
         sys.exit(1)
 
     # create log filename with timestamp
-    log_file = f"activity_log_{datetime.utcnow().strftime('%Y%m%d_%H%M%SZ')}.csv"
+    log_file = f"data/activity_log_{datetime.utcnow().strftime('%Y%m%d_%H%M%SZ')}.csv"
 
     try:
         # default poll interval 5 seconds (you can change this)

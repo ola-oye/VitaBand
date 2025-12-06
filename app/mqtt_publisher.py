@@ -47,7 +47,7 @@ class HealthMQTTPublisher:
         if username and password:
             self.client.username_pw_set(username, password)
 
-        # TLS security (optional)
+        # TLS security
         if use_tls:
             self.client.tls_set()
 
@@ -104,7 +104,7 @@ class HealthMQTTPublisher:
         return False
 
     def disconnect(self):
-        """Gracefully close connection"""
+        """close connection"""
         if self.connected:
             print("[DISCONNECT] Disconnecting...")
             try:
@@ -121,14 +121,14 @@ class HealthMQTTPublisher:
     def _validate_result(self, result):
         """Ensure result contains all required fields"""
 
-        required = ["timestamp", "sensor_data", "active_labels", "num_active"]
+        required = ["timestamp", "sensor_data", "active_labels", "num_active", "recommendation"]
 
         for key in required:
             if key not in result:
                 raise ValueError(f"Missing required key: '{key}'")
 
     # -----------------------------------------------------
-    # PUBLISH HELPERS
+    # MAIN PUBLISHING METHOD
     # -----------------------------------------------------
 
     def _publish(self, topic, message, qos=0, retain=False):
@@ -155,12 +155,12 @@ class HealthMQTTPublisher:
         return False
 
     # -----------------------------------------------------
-    # MAIN HEALTH UPDATE PUBLISHING
+    # HEALTH UPDATE PUBLISHING
     # -----------------------------------------------------
 
     def publish_health_update(self, result):
         """Publish all health updates in structured format"""
-
+ 
         if not self.connected:
             print("[WARN] Cannot publish – not connected to MQTT broker.")
             return False
@@ -171,7 +171,7 @@ class HealthMQTTPublisher:
             print(f"[ERROR] Invalid result data: {e}")
             return False
 
-        # Use ISO 8601 timestamp for all messages
+        # To use ISO 8601 timestamp for all messages
         timestamp = datetime.utcnow().isoformat() + "Z"
 
         # 1. Recommendation
@@ -182,8 +182,8 @@ class HealthMQTTPublisher:
                 "message": rec.get("full_message"),
                 "summary": rec.get("summary"),
                 "advice": rec.get("recommendation"),
-                "priority": rec.get("priority", "normal"),
-                "active_labels": result["active_labels"],
+                "priority": rec.get("priority") if rec else "normal",
+
             }
             self._publish(self.topics["recommendation"], rec_msg, qos=1)
 
@@ -197,8 +197,6 @@ class HealthMQTTPublisher:
         # 3. Health status
         status_msg = {
             "timestamp": timestamp,
-            "active_labels": result["active_labels"],
-            "num_active": result["num_active"],
             "priority": rec.get("priority") if rec else "normal",
         }
         self._publish(self.topics["health_status"], status_msg, qos=1)
@@ -259,10 +257,10 @@ class HealthMQTTPublisher:
 
 
 # -----------------------------------------------------
-# GRACEFUL SHUTDOWN (Ctrl+C)
+# SHUTDOWN (Ctrl+C)
 # -----------------------------------------------------
 
-def enable_graceful_shutdown(publisher):
+def enable_shutdown(publisher):
     def shutdown_handler(sig, frame):
         print("\n[EXIT] Caught shutdown signal.")
         publisher.disconnect()

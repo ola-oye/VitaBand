@@ -1,0 +1,18 @@
+# Core dependencies
+numpy==2.3.5
+pandas==2.2.3
+
+# Machine Learning
+scikit-learn==1.7.2
+
+# MQTT
+paho-mqtt==1.6.1
+
+# mDNS/Zeroconf
+zeroconf==0.71.4
+
+# I2C for sensors (Raspberry Pi)
+smbus2==0.4.2
+
+# Sensor libraries
+bme280==0.7.0
