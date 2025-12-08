@@ -1,0 +1,89 @@
+timestamp,body_temp,ambient_temp,pressure_hpa,humidity_pct,accel_x,accel_y,accel_z,gyro_x,gyro_y,gyro_z,heart_rate_bpm,spo2_pct,active_labels,recommendation,priority
+2025-12-08T17:57:41.720891Z,28.18,32.65,900.08,3.23,-1.93,2.53,-3.46,-163.49,22.95,123.31,90.86,80.47,"High activity, Stressed, Healthy","From what the data shows, You're showing noticeable signs of stress. Your body is working hard, similar to jogging or physical work.
+
+What this means:
+Pause for a moment, take slow breaths, and try to relax. Be careful and hydrate; slow down if you feel strained.
+
+Body temp: 28.2°C
+Heart rate: 91 BPM
+SpO₂: 80.5%
+Ambient: 32.6°C, 3.2%
+
+Suggested next step: Pause for a moment, take slow breaths, and try to relax.",caution
+2025-12-08T17:57:47.368697Z,28.18,32.65,900.08,3.23,-1.93,2.53,-3.46,-163.49,22.95,123.31,90.86,80.47,"High activity, Stressed, Healthy","From what the data shows, You're showing noticeable signs of stress. Your body is working hard, similar to jogging or physical work.
+
+What this means:
+Pause for a moment, take slow breaths, and try to relax. Be careful and hydrate; slow down if you feel strained.
+
+Body temp: 28.2°C
+Heart rate: 91 BPM
+SpO₂: 80.5%
+Ambient: 32.6°C, 3.2%
+
+Suggested next step: Pause for a moment, take slow breaths, and try to relax.",caution
+2025-12-08T17:57:53.002787Z,28.18,32.65,900.08,3.23,-1.93,2.53,-3.46,-163.49,22.95,123.31,90.86,80.47,"High activity, Stressed, Healthy","From what the data shows, You're showing noticeable signs of stress. Your body is working hard, similar to jogging or physical work.
+
+What this means:
+Pause for a moment, take slow breaths, and try to relax. Be careful and hydrate; slow down if you feel strained.
+
+Body temp: 28.2°C
+Heart rate: 91 BPM
+SpO₂: 80.5%
+Ambient: 32.6°C, 3.2%
+
+Suggested next step: Pause for a moment, take slow breaths, and try to relax.",caution
+2025-12-08T17:57:58.638074Z,28.18,32.65,900.08,3.23,-1.93,2.53,-3.46,-163.49,22.95,123.31,90.86,80.47,"High activity, Stressed, Healthy","From what the data shows, You're showing noticeable signs of stress. Your body is working hard, similar to jogging or physical work.
+
+What this means:
+Pause for a moment, take slow breaths, and try to relax. Be careful and hydrate; slow down if you feel strained.
+
+Body temp: 28.2°C
+Heart rate: 91 BPM
+SpO₂: 80.5%
+Ambient: 32.6°C, 3.2%
+
+Suggested next step: Pause for a moment, take slow breaths, and try to relax.",caution
+2025-12-08T17:58:04.268891Z,28.18,32.65,900.08,3.23,-1.93,2.53,-3.46,-163.49,22.95,123.31,90.86,80.47,"High activity, Stressed, Healthy","Based on the sensors, You're showing noticeable signs of stress. Your body is working hard, similar to jogging or physical work.
+
+What this means:
+Pause for a moment, take slow breaths, and try to relax. Be careful and hydrate; slow down if you feel strained.
+
+Body temp: 28.2°C
+Heart rate: 91 BPM
+SpO₂: 80.5%
+Ambient: 32.6°C, 3.2%
+
+Suggested next step: Pause for a moment, take slow breaths, and try to relax.",caution
+2025-12-08T17:58:09.896437Z,28.18,32.65,900.08,3.23,-1.93,2.53,-3.46,-163.49,22.95,123.31,90.86,80.47,"High activity, Stressed, Healthy","Based on the sensors, You're showing noticeable signs of stress. Your body is working hard, similar to jogging or physical work.
+
+What this means:
+Pause for a moment, take slow breaths, and try to relax. Be careful and hydrate; slow down if you feel strained.
+
+Body temp: 28.2°C
+Heart rate: 91 BPM
+SpO₂: 80.5%
+Ambient: 32.6°C, 3.2%
+
+Suggested next step: Pause for a moment, take slow breaths, and try to relax.",caution
+2025-12-08T17:58:15.537209Z,28.18,32.65,900.08,3.23,-1.93,2.53,-3.46,-163.49,22.95,123.31,90.86,80.47,"High activity, Stressed, Healthy","From what the data shows, You're showing noticeable signs of stress. Your body is working hard, similar to jogging or physical work.
+
+What this means:
+Pause for a moment, take slow breaths, and try to relax. Be careful and hydrate; slow down if you feel strained.
+
+Body temp: 28.2°C
+Heart rate: 91 BPM
+SpO₂: 80.5%
+Ambient: 32.6°C, 3.2%
+
+Suggested next step: Pause for a moment, take slow breaths, and try to relax.",caution
+2025-12-08T17:58:21.219346Z,28.18,32.65,900.08,3.23,-1.93,2.53,-3.46,-163.49,22.95,123.31,90.86,80.47,"High activity, Stressed, Healthy","Based on the sensors, You're showing noticeable signs of stress. Your body is working hard, similar to jogging or physical work.
+
+What this means:
+Pause for a moment, take slow breaths, and try to relax. Be careful and hydrate; slow down if you feel strained.
+
+Body temp: 28.2°C
+Heart rate: 91 BPM
+SpO₂: 80.5%
+Ambient: 32.6°C, 3.2%
+
+Suggested next step: Pause for a moment, take slow breaths, and try to relax.",caution

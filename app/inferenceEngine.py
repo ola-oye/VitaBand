@@ -15,16 +15,10 @@ import sys
 import os
 import time
 import csv
-import pickle
+import joblib
 from datetime import datetime
 from typing import Dict, List, Any
-
 import numpy as np
-
-# Ensure current directory is on the path for local imports
-current_dir = os.path.dirname(os.path.abspath(__file__))
-if current_dir not in sys.path:
-    sys.path.insert(0, current_dir)
 
 # Import sensor manager (required)
 try:
@@ -81,18 +75,19 @@ class ActivityMonitor:
             raise
 
         # Load scaler & model
+        # Load scaler & model
         print("\n2) Loading ML artifacts...")
         try:
-            with open(scaler_path, "rb") as f:
-                self.scaler = pickle.load(f)
+            self.scaler = joblib.load(scaler_path)
             print(f"   ✓ Scaler loaded from: {scaler_path}")
 
-            with open(model_path, "rb") as f:
-                self.model = pickle.load(f)
+            self.model = joblib.load(model_path)
             print(f"   ✓ Model loaded from: {model_path}")
+
         except Exception as e:
             print(f"   ✗ Error loading model/scaler: {e}")
             raise
+
 
         # Recommendation engine
         print("\n3) Initializing recommendation engine...")
@@ -445,21 +440,9 @@ class ActivityMonitor:
 # Main entrypoint
 # -----------------------
 def main():
-    # Default paths: assume repo structure:
-    # project_root/
-    #   model/
-    #     rf_model.pkl
-    #     scaler.pkl
-    base_dir = os.path.dirname(os.path.abspath(__file__))
-    model_dir = os.path.join(base_dir, "model")
-
-    # Allow safe default if running from deeper directory (previous code used parent dir)
-    if not os.path.isdir(model_dir):
-        # try parent folder
-        model_dir = os.path.join(os.path.dirname(base_dir), "model")
-
-    model_path = os.path.join(model_dir, "rf_model.pkl")
-    scaler_path = os.path.join(model_dir, "scaler.pkl")
+  
+    model_path = os.path.join(os.path.dirname(__file__), '..', 'model', 'rf_model.joblib')
+    scaler_path = os.path.join(os.path.dirname(__file__), '..', 'model', 'scaler.joblib')
 
     # Validate artifact exist
     missing = [p for p in (model_path, scaler_path) if not os.path.isfile(p)]
