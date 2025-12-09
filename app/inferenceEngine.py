@@ -75,7 +75,6 @@ class ActivityMonitor:
             raise
 
         # Load scaler & model
-        # Load scaler & model
         print("\n2) Loading ML artifacts...")
         try:
             self.scaler = joblib.load(scaler_path)

@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-mDNS Service Advertiser & Discovery for VitaBand Health Monitoring System
+mDNS Service Advertiser & Discovery for vitaband Health Monitoring System
 
 Advertises the health monitoring service on the local network
 so mobile apps can automatically discover it.
@@ -48,7 +48,7 @@ class HealthMonitorService:
 
     SERVICE_TYPE = "_mqtt._tcp.local."
 
-    def __init__(self, service_name="VitaBand", port=1883):
+    def __init__(self, service_name="vitaband", port=1883):
         self.service_name = service_name
         self.port = port
         self.zeroconf = None
@@ -76,7 +76,7 @@ class HealthMonitorService:
                 port=self.port,
                 properties={
                     b"version": b"1.0",
-                    b"service": b"health-monitoring",
+                    b"service": b"vitaband",
                     b"description": b"Real-time health and activity monitoring",
                 },
                 addresses=[socket.inet_aton(local_ip)],
@@ -135,7 +135,7 @@ class MDNSListener:
         }
 
         # Only track our target service
-        if props.get("service") != "health-monitoring":
+        if props.get("service") != "vitaband":
             return
 
         addresses = [socket.inet_ntoa(addr) for addr in info.addresses]
@@ -162,7 +162,7 @@ class MDNSListener:
 # Discovery Tool
 
 class ServiceDiscovery:
-    """Discovers VitaBand services via mDNS."""
+    """Discovers vitaband services via mDNS."""
 
     SERVICE_TYPE = "_mqtt._tcp.local."
 
@@ -196,7 +196,7 @@ class ServiceDiscovery:
                 print(f"    Address: {svc['address']}:{svc['port']}")
                 print(f"    Properties: {svc['properties']}")
         else:
-            print("\n✗ No health-monitoring services found")
+            print("\n✗ No vitaband services found")
 
         return self.discovered_services
 
@@ -208,7 +208,7 @@ def test_mdns_advertiser():
     print("TESTING mDNS SERVICE ADVERTISER")
     print("=" * 70)
 
-    service = HealthMonitorService("Health Monitor", 1883)
+    service = HealthMonitorService("vitaband", 1883)
 
     if service.start():
         print("\nService is now discoverable on the network!")
