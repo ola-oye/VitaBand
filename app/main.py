@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """
 Activity Monitor
-Sensor Manager -> Model -> Recommendations -> (optional) MQTT / mDNS
+Reads sensor data from JSON file -> Model -> Recommendations
 """
 import sys
 import os
@@ -11,14 +11,7 @@ import joblib
 from datetime import datetime
 from typing import Dict, List, Any
 import numpy as np
-
-
-# Import sensor manager (required)
-try:
-    from sensor_manager import SensorManager
-except ImportError:
-    print("ERROR: sensor_manager.py not found! Make sure it is in the same directory.")
-    sys.exit(1)
+import json
 
 # Import recommendation engine (required)
 try:
@@ -43,28 +36,35 @@ except ImportError:
 
 
 class ActivityMonitor:
-    """Main monitoring system that connects sensors to predictions."""
+    """Main monitoring system that reads from JSON file and makes predictions."""
 
     def __init__(
         self,
         model_path: str,
         scaler_path: str,
-        mqtt_enabled: bool = True,
+        json_file: str,
+        mqtt_enabled: bool = False,
         mqtt_broker: str = "localhost",
-        mdns_enabled: bool = True,
+        mdns_enabled: bool = False,
     ):
         # ------ Initialization log ------
         print("=" * 70)
         print("INITIALIZING ACTIVITY MONITORING SYSTEM")
         print("=" * 70)
 
-        # Sensor manager
-        print("\n1) Initializing sensors...")
+        # Load JSON data
+        print("\n1) Loading sensor data from JSON file...")
+        if not os.path.isfile(json_file):
+            print(f"   ✗ JSON file not found: {json_file}")
+            raise FileNotFoundError(f"JSON file not found: {json_file}")
+        
         try:
-            self.sensor_manager = SensorManager()
-            print("   ✓ Sensor manager initialized")
+            with open(json_file, 'r') as f:
+                self.json_data = json.load(f)
+            print(f"   ✓ Loaded {len(self.json_data)} records from {json_file}")
+            self.json_index = 0
         except Exception as e:
-            print(f"   ✗ Error initializing SensorManager: {e}")
+            print(f"   ✗ Error loading JSON file: {e}")
             raise
 
         # Load scaler & model
@@ -79,7 +79,6 @@ class ActivityMonitor:
         except Exception as e:
             print(f"   ✗ Error loading model/scaler: {e}")
             raise
-
 
         # Recommendation engine
         print("\n3) Initializing recommendation engine...")
@@ -117,7 +116,6 @@ class ActivityMonitor:
                 try:
                     started = self.mdns_service.start()
                 except Exception:
-                    # some mDNS implementations return None/True etc.
                     started = True
                 if started:
                     print("   ✓ mDNS advertised")
@@ -175,18 +173,23 @@ class ActivityMonitor:
         ]
 
         print("\n6) System ready!")
+        print(f"   - JSON Records: {len(self.json_data)}")
         print(f"   - Features: {len(self.feature_names)}")
         print(f"   - Labels: {len(self.label_names)}")
         print(f"   - MQTT: {'Enabled' if self.mqtt_publisher else 'Disabled'}")
         print(f"   - mDNS: {'Enabled' if self.mdns_service else 'Disabled'}")
         print("=" * 70 + "\n")
 
-    # -----------------------
-    # Sensor / prediction helpers
-    # -----------------------
     def read_sensors(self) -> Dict[str, Any]:
-        """Read all sensors and return a dictionary of sensor values."""
-        return self.sensor_manager.read_all_sensors()
+        """Read next sensor data from JSON file (cycles through records)."""
+        if self.json_index >= len(self.json_data):
+            self.json_index = 0  # Loop back to start
+        
+        record = self.json_data[self.json_index]
+        self.json_index += 1
+        
+        # Extract readings from the JSON structure
+        return record["readings"]
 
     def _validate_sensor_data(self, sensor_data: Dict[str, Any]) -> None:
         """Ensure all required feature keys exist in sensor_data."""
@@ -195,13 +198,7 @@ class ActivityMonitor:
             raise KeyError(f"Missing sensor keys: {missing}")
 
     def predict(self, sensor_data: Dict[str, Any]) -> Dict[str, Any]:
-        """
-        Using the model to predict labels from sensor_data.
-
-        This function supports:
-         - Multi-output/multi-label models that return an array per sample
-         - Single-label classifiers that return scalar label (converted to dict form)
-        """
+        """Using the model to predict labels from sensor_data."""
         # Validate incoming data
         self._validate_sensor_data(sensor_data)
 
@@ -215,39 +212,28 @@ class ActivityMonitor:
         # Predict
         raw_pred = self.model.predict(X_scaled)
 
-        # raw_pred may be:
-        # - a 2D array (1, n_labels) for multi-label or multioutput
-        # - a 1D array (n_labels,) if model returns array per sample and we index [0]
-        # - a scalar (single label) from classic classifiers
-        # Normalize into a 1D binary-like sequence aligned with label_names
+        # Normalize predictions
         if isinstance(raw_pred, np.ndarray):
-            # If shape (1, n) -> take index 0
             if raw_pred.ndim == 2 and raw_pred.shape[0] == 1:
                 preds = np.asarray(raw_pred[0])
             elif raw_pred.ndim == 1 and raw_pred.shape[0] == len(self.label_names):
                 preds = raw_pred
             else:
-                # Unexpected shape; try to flatten
                 preds = raw_pred.ravel()
         else:
-            # not numpy array (scalar)
             preds = np.array([raw_pred])
 
-        # For many multi-label models predictions are {0,1}. But the models may return probabilities.
-        # If values are floats between 0 and 1, 0.5 threshold is applied.
+        # Convert to binary predictions
         try:
             preds_float = preds.astype(float)
             if np.any((preds_float >= 0.0) & (preds_float <= 1.0)):
-                # convert to binary
                 binary_preds = (preds_float >= 0.5).astype(int)
             else:
-                # likely integer labels (e.g., 0/1 or multiclass encoding)
                 binary_preds = preds_float.astype(int)
         except Exception:
-            # fallback: treat non-convertible as zeros
             binary_preds = np.zeros(len(self.label_names), dtype=int)
 
-        # If length mismatch, try to align by truncation/padding
+        # Handle length mismatch
         if binary_preds.shape[0] != len(self.label_names):
             if binary_preds.shape[0] < len(self.label_names):
                 pad = np.zeros(len(self.label_names) - binary_preds.shape[0], dtype=int)
@@ -272,7 +258,6 @@ class ActivityMonitor:
             recommendation = self.recommendation_engine.interpret(active_labels, sensor_data)
             result["recommendation"] = recommendation
         except Exception as e:
-            # Recommendation engine must not break the main loop
             result["recommendation"] = {
                 "summary": "",
                 "recommendation": "",
@@ -282,12 +267,11 @@ class ActivityMonitor:
 
         return result
 
-    
-    # Display / Logging / Publish
     def display_result(self, result: Dict[str, Any]) -> None:
-        """Printing a human-friendly summary to the console."""
+        """Print a human-friendly summary to the console."""
         print("\n" + "=" * 70)
         print(f"MONITORING UPDATE - {result['timestamp']}")
+        print(f"[Record {self.json_index}/{len(self.json_data)}]")
         print("=" * 70)
 
         s = result["sensor_data"]
@@ -320,16 +304,17 @@ class ActivityMonitor:
 
     def monitor_continuous(self, log_file: str, poll_interval: float = 5.0) -> None:
         """
-        Continuously monitor sensors, predict, display, optionally publish, and log.
+        Continuously read from JSON, predict, display, and log.
 
         Args:
             log_file: CSV path to write logs to.
             poll_interval: seconds between each measurement.
         """
         print(f"Starting continuous monitoring (interval = {poll_interval} seconds)")
+        print(f"Total records: {len(self.json_data)}")
         print("Press Ctrl+C to stop\n")
 
-        # CSV header: timestamp, features..., active_labels, recommendation, priority
+        # CSV header
         header = ["timestamp"] + self.feature_names + ["active_labels", "recommendation", "priority"]
         try:
             f = open(log_file, "w", newline="", encoding="utf-8")
@@ -345,7 +330,6 @@ class ActivityMonitor:
         try:
             while True:
                 try:
-                    # Read and validate sensors
                     sensor_data = self.read_sensors()
                     self._validate_sensor_data(sensor_data)
                 except KeyError as e:
@@ -371,14 +355,14 @@ class ActivityMonitor:
                 except Exception as e:
                     print(f"[WARN] Display failed: {e}")
 
-                # MQTT publish (best-effort)
+                # MQTT publish
                 if self.mqtt_publisher:
                     try:
                         self.mqtt_publisher.publish_health_update(result)
                     except Exception as e:
                         print(f"[WARN] MQTT publish exception: {e}")
 
-                # Prepare CSV row (match header)
+                # Prepare CSV row
                 rec = result.get("recommendation", {})
                 active_labels_str = ", ".join(result.get("active_labels", []))
                 rec_msg = rec.get("summary", "")
@@ -396,7 +380,6 @@ class ActivityMonitor:
                 except Exception as e:
                     print(f"[WARN] Failed to write log row: {e}")
 
-                # Sleep
                 time.sleep(poll_interval)
         except KeyboardInterrupt:
             print("\n\n✓ Monitoring stopped by user")
@@ -408,13 +391,7 @@ class ActivityMonitor:
                 pass
 
     def close(self) -> None:
-        """Clean up resources (sensor manager, mqtt, mdns)"""
-        try:
-            if hasattr(self.sensor_manager, "close"):
-                self.sensor_manager.close()
-        except Exception as e:
-            print(f"[WARN] sensor_manager.close() failed: {e}")
-
+        """Clean up resources (mqtt, mdns)"""
         try:
             if self.mqtt_publisher:
                 self.mqtt_publisher.disconnect()
@@ -428,15 +405,17 @@ class ActivityMonitor:
             print(f"[WARN] mdns_service.stop() failed: {e}")
 
 
-# -----------------------
-# Main entrypoint
-# -----------------------
 def main():
-  
+    json_file = "sensor_data.json"
+    
+    if not os.path.isfile(json_file):
+        print(f"\nERROR: JSON file not found: {json_file}")
+        sys.exit(1)
+    
     model_path = os.path.join(os.path.dirname(__file__), '..', 'model', 'rf_model.joblib')
     scaler_path = os.path.join(os.path.dirname(__file__), '..', 'model', 'scaler.joblib')
 
-    # Validate artifact exist
+    # Validate artifacts exist
     missing = [p for p in (model_path, scaler_path) if not os.path.isfile(p)]
     if missing:
         print("\nFailed to find model/scaler files:")
@@ -449,6 +428,7 @@ def main():
         monitor = ActivityMonitor(
             model_path=model_path,
             scaler_path=scaler_path,
+            json_file=json_file,
             mqtt_enabled=True,
             mqtt_broker="localhost",
             mdns_enabled=True,
@@ -457,11 +437,10 @@ def main():
         print(f"\nFailed to initialize ActivityMonitor: {e}")
         sys.exit(1)
 
-    # create log filename with timestamp
+    # Create log filename with timestamp
     log_file = f"data/activity_log_{datetime.utcnow().strftime('%Y%m%d_%H%M%SZ')}.csv"
 
     try:
-        # default poll interval 5 seconds (you can change this)
         monitor.monitor_continuous(log_file=log_file, poll_interval=5.0)
     finally:
         monitor.close()

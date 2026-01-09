@@ -17,6 +17,7 @@ import threading
 import queue
 import re
 import time
+import json
 from datetime import datetime
 from collections import defaultdict
 
@@ -130,67 +131,55 @@ class SensorManager:
     
     def _parse_line(self, sensor, line):
         """Parse sensor output line and extract metric data"""
+        import json  # make sure json is imported if using MAX30102 JSON parsing
         line = line.strip()
         results = []
-        
-        # DS18B20: body temperature (single number)
+
         if sensor == "ds18b20":
             m = re.match(r"^\s*([+-]?\d+\.?\d*)\s*$", line)
             if m:
-                return [("body_temp", m.group(1))]
-        
-        # BME280: ambient temperature
-        if "Temperature:" in line and "°C" in line:
-            nums = re.findall(r"([+-]?\d+\.?\d*)", line)
-            if len(nums) >= 1:
-                results.append(("ambient_temp", nums[0]))
-                return results
-        
-        # BME280: pressure
-        if line.startswith("Pressure:"):
-            m = re.search(r"([+-]?\d+\.?\d*)", line)
-            if m:
-                results.append(("pressure_hpa", m.group(1)))
-                return results
-        
-        # BME280: humidity
-        if "Humidity:" in line:
-            m = re.search(r"([+-]?\d+\.?\d*)", line)
-            if m:
-                results.append(("humidity_pct", m.group(1)))
-                return results
-        
-        # MPU6050: accelerometer
-        if line.startswith("Accel:"):
-            for axis in ("X", "Y", "Z"):
-                m = re.search(rf"{axis}=\s*([+-]?\d+\.?\d*)g", line)
+                results.append(("body_temp", m.group(1)))
+
+        elif sensor == "bme280":
+            if "Temperature:" in line and "°C" in line:
+                nums = re.findall(r"([+-]?\d+\.?\d*)", line)
+                if nums:
+                    results.append(("ambient_temp", nums[0]))
+            elif line.startswith("Pressure:"):
+                m = re.search(r"([+-]?\d+\.?\d*)", line)
                 if m:
-                    results.append((f"accel_{axis.lower()}", m.group(1)))
-            return results
-        
-        # MPU6050: gyroscope
-        if line.startswith("Gyro:"):
-            for axis in ("X", "Y", "Z"):
-                m = re.search(rf"{axis}=\s*([+-]?\d+\.?\d*)°/s", line)
+                    results.append(("pressure_hpa", m.group(1)))
+            elif "Humidity:" in line:
+                m = re.search(r"([+-]?\d+\.?\d*)", line)
                 if m:
-                    results.append((f"gyro_{axis.lower()}", m.group(1)))
-            return results
-        
-        # MAX30102: heart rate
-        if "Heart Rate" in line:
-            m = re.search(r"([0-9]+\.?[0-9]*)", line)
-            if m:
-                results.append(("heart_rate_bpm", m.group(1)))
-                return results
-        
-        # MAX30102: SpO2
-        if "SpO2" in line or "SpO2 Level" in line:
-            m = re.search(r"([0-9]+\.?[0-9]*)", line)
-            if m:
-                results.append(("spo2_pct", m.group(1)))
-                return results
-        
+                    results.append(("humidity_pct", m.group(1)))
+
+        elif sensor == "mpu6050":
+            if line.startswith("Accel:"):
+                for axis in ("X", "Y", "Z"):
+                    m = re.search(rf"{axis}=\s*([+-]?\d+\.?\d*)g", line)
+                    if m:
+                        results.append((f"accel_{axis.lower()}", m.group(1)))
+            elif line.startswith("Gyro:"):
+                for axis in ("X", "Y", "Z"):
+                    m = re.search(rf"{axis}=\s*([+-]?\d+\.?\d*)°/s", line)
+                    if m:
+                        results.append((f"gyro_{axis.lower()}", m.group(1)))
+
+        elif sensor == "max30102":
+            # JSON output from MAX30102
+            try:
+                data = json.loads(line)
+                if "heart_rate" in data and data["heart_rate"] is not None:
+                    results.append(("heart_rate_bpm", data["heart_rate"]))
+                if "spo2" in data and data["spo2"] is not None:
+                    results.append(("spo2_pct", data["spo2"]))
+            except json.JSONDecodeError:
+                pass
+
+        # ALWAYS return a list (could be empty)
         return results
+
     
     def _reader_thread(self, proc, sensor_name):
         """Read lines from sensor subprocess and queue parsed data"""
@@ -265,23 +254,22 @@ class SensorManager:
                 if value is None:
                     # Provide reasonable defaults
                     defaults = { 
-                        'body_temp': 38.18543053481313,
-                        'ambient_temp': 40.65328021937469,
-                        'pressure_hpa': 1118.0779043417701,
-                        'humidity_pct': 2.2290509612701151,
-                        'accel_x': -2.9304472197953389,
-                        'accel_y': 1.52609944889852,
-                        'accel_z': -3.45767613961922,
-                        'gyro_x': -192.49125756855392,
-                        'gyro_y': 228.95306166720195,
-                        'gyro_z': 104.31422945069176,
-                        'heart_rate_bpm': 100.85761985373327,
-                        'spo2_pct': 50.4721417330743
+                        'body_temp': 28.18,
+                        'ambient_temp': 32.65,
+                        'pressure_hpa': 900.08,
+                        'humidity_pct': 3.23,
+                        'accel_x': -1.93,
+                        'accel_y': 2.53,
+                        'accel_z': -3.46,
+                        'gyro_x': -163.49,
+                        'gyro_y': 22.95,
+                        'gyro_z': 123.31,
+                        'heart_rate_bpm': 90.86,
+                        'spo2_pct': 80.47
                     }
                     value = defaults.get(feature, 0.0)
                 
                 sensor_data[feature] = value
-            
             return sensor_data
     
     def get_sensor_status(self):
