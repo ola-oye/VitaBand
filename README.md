@@ -1,175 +1,99 @@
-# VitaBand — System Architecture
+# VitaBand
 
-This document describes the high-level architecture for VitaBand, a wearable IoT health
-system that collects physiological and environmental data, performs local processing and
-ML inference on a Raspberry Pi, and publishes user-friendly summaries to a mobile app
-over MQTT.
+VitaBand is a prototype wearable IoT health system that collects physiological and
+environmental signals from multiple sensors, performs local preprocessing and
+lightweight ML inference on an edge device (e.g., Raspberry Pi), and publishes
+human-friendly summaries and recommendations over MQTT.
 
-## Table of contents
+This repository contains:
 
-- [High-level overview](#high-level-overview)
-- [Architecture components](#architecture-components)
-	- [Sensor layer](#sensor-layer)
-	- [Edge computing (Raspberry Pi)](#edge-computing-raspberry-pi)
-		- [Data acquisition](#data-acquisition)
-		- [Feature extraction](#feature-extraction)
-		- [On-device ML inference](#on-device-ml-inference)
-		- [Interpretation & recommendations](#interpretation--recommendations)
-		- [Local alerts & storage](#local-alerts--storage)
-	- [Local MQTT communication](#local-mqtt-communication)
-	- [Mobile app layer](#mobile-app-layer)
-- [Data flow summary](#data-flow-summary)
-- [System strengths](#system-strengths)
-- [Next steps / suggestions](#next-steps--suggestions)
+- app/: Edge application code (sensor manager, inference, MQTT, recommendation engine)
+- sensors/: Sensor-specific drivers and helper scripts (MAX30102, BME280, MPU6050, DS18B20)
+- ml_training/: Training utilities and datasets used to train lightweight models
+- model/: Trained model/scaler/encoder artifacts (joblib files)
+- test/: Example/test scripts and sample sensor data
 
-## High-level overview
+Quick links:
 
-VitaBand is a wearable health device ecosystem that:
+- Usage & examples: docs/USAGE.md
+- Developer notes & architecture: docs/DEVELOPER.md
+- Requirements: requirements.txt
 
-- Collects physiological and environmental data from multiple sensors.
-- Processes and extracts features locally on a Raspberry Pi.
-- Runs a lightweight ML model (e.g., PyTorch Lite or ONNX Runtime) for inference.
-- Produces plain-English insights and recommendations via a small rule engine.
-- Publishes vitals and explanations to a mobile app using MQTT (works offline on local
-	Wi‑Fi).
+## Quick start (development)
 
-The main logical layers are:
+1. Create a virtual environment and install dependencies:
 
-1. Wearable / Sensor layer (edge sensors)
-2. Edge computing & ML inference (Raspberry Pi)
-3. Mobile app / dashboard (MQTT subscriber)
-4. Cloud storage & analytics (optional)
+	 python3 -m venv .venv
+	 source .venv/bin/activate
+	 pip install --upgrade pip
+	 pip install -r requirements.txt
 
-## Architecture components
+2. Run in simulation/test mode (no hardware required):
 
-### Sensor layer
+	 - The test harness is in `test/main.py`. It expects a model/scaler file under
+		 `model/` and `test/sensor_data.json` to exist. Adjust model filenames if needed.
 
-Sensors connect directly to the Raspberry Pi (I²C) and capture both physiological and
-environmental signals.
+	 Example (from repo root):
+	 python3 test/main.py
 
-Key sensors and their purposes:
+3. Run on a Raspberry Pi with sensors connected:
 
-| Sensor     | Purpose                                      |
-|------------|----------------------------------------------|
-| MAX30102   | Heart rate, SpO₂, PPG waveform               |
-| MCP9808    | Body (skin) temperature                      |
-| BME280     | Ambient temperature, humidity, pressure     |
-| MPU6050    | Body movement: accelerometer + gyro (steps,
-|            | orientation, motion artifact detection)      |
+	 - Start the main monitor (this will spawn the per-sensor subprocesses from
+		 the `sensors/` folder):
 
-This layer provides raw streams that feed the edge-processing modules.
+		 python3 app/inferenceEngine.py
 
-### Edge computing (Raspberry Pi)
+	 - The app will attempt to connect to an MQTT broker at localhost by default and
+		 will optionally advertise via mDNS. See `app/inferenceEngine.py` for CLI hooks.
 
-The Raspberry Pi runs several cooperating modules:
+## Model training
 
-#### Data acquisition
+Training utilities live in `ml_training/`. A simple training script `trainning.py`
+creates RandomForest models, scalers and label encoders and saves them as
+joblib artifacts. Example usage (from repo root):
 
-- Python scripts read sensor values over I²C.
-- Timestamp synchronization across sensors.
-- Basic preprocessing: outlier removal and motion-PPG artifact detection.
+	 python3 ml_training/trainning.py
 
-#### Feature extraction
+This script expects CSV datasets from the `ml_training/` folder. After training,
+copy or move the produced `*_model.joblib`, `*_scaler.joblib`, and
+`*_label_encoder.joblib` files into the `model/` directory so the edge app can load
+them.
 
-- Periodic aggregation (example: every 30 seconds) to compute features:
-	- HR mean and HR variability (HRV)
-	- SpO₂ mean
-	- Skin temperature trend
-	- Motion intensity (accelerometer energy)
-	- Ambient conditions (temp, humidity, pressure)
-	- PPG signal quality metrics
+Note: Some test/code paths expect different artifact names (e.g., `rf_model.joblib`).
+If you get "model not found" errors, either rename the trained files or update
+the path inside the corresponding script.
 
-#### On-device ML inference
+## Project structure (high level)
 
-- A compact model (PyTorch Lite or ONNX Runtime) consumes fused features and
-	produces predictions such as:
-	- Stress
-	- Fatigue
-	- Early illness
-	- Possible fever
-	- Low oxygen (hypoxemia)
-	- Overtraining
-	- Dehydration (inferred from HR trends + temp + humidity + HRV)
-	- Activity state: sleep / rest / active / normal
+- app/
+	- inferenceEngine.py      # Live monitoring: uses SensorManager and ML models
+	- generic_inferenceEngine.py # Generic ML model wrapper used by inferenceEngine
+	- sensor_manager.py       # Starts sensor subprocesses and provides read_all_sensors()
+	- recommendation_engine.py# Rule-based interpreter for ML outputs
+	- mqtt_publisher.py       # MQTT publishing helper
+	- mdns_service.py         # Optional service discovery
+- sensors/                  # Sensor-specific scripts and drivers
+- ml_training/              # Training data and scripts
+- model/                    # Trained model artifacts (joblib)
+- test/                     # Test harness and sample sensor data
 
-#### Interpretation & recommendations
+## MQTT topics (used by app)
 
-- A small rule-based engine converts model outputs and features into human-friendly
-	explanations and action suggestions.
+- vitaband/vitals — periodic JSON summary of vitals
+- vitaband/explanation — plain-English recommendations
+- vitaband/device/status — device heartbeat/status messages
 
-Examples:
+## Known notes & next steps
 
-> "Your heart rate is slightly higher than usual for your activity level. This may
-> indicate that your body is under stress. It could be helpful to rest for a few
-> minutes."
+- The codebase mixes a few test/demo entry points that expect different model
+	filenames. If you plan to run tests, confirm the model artifact names match what
+	the test script expects or update the script.
+- Add simple unit tests for feature extraction and the recommendation engine.
+- Consider documenting the expected JSON payload shapes for each MQTT topic.
 
-#### Local alerts & storage
+## Where to find more information
 
-- Real-time local alerts (e.g., "High stress detected", "Possible fever symptoms").
-- Local storage using SQLite for offline buffering and historical queries.
+See the docs directory for step-by-step usage and developer notes:
 
-### Local MQTT communication
-
-The Raspberry Pi acts as an MQTT publisher on the local network. Example topics:
-
-| Topic                      | Description                                   |
-|---------------------------:|:----------------------------------------------|
-| vitaband/vitals            | HR, SpO₂, Temp, Motion, etc.                  |
-| vitaband/explanation       | Plain-English insights and action
-|                           | recommendations                                |
-| vitaband/device/status     | Battery, uptime, errors                        |
-
-The mobile app subscribes to the relevant topics. This approach supports fully
-offline operation when both devices are on the same Wi‑Fi network.
-
-### Mobile app layer
-
-Expected mobile app capabilities:
-
-- Connect to the same Wi‑Fi network as the Raspberry Pi and subscribe to MQTT topics.
-- Display real-time vitals and plain-English insights.
-- Plot time-series trends (historical data from local storage or periodic sync).
-- Present alerts and recommended actions.
-- Operate without internet access (local-only mode).
-
-## Data flow summary
-
-Sensors → Raspberry Pi (I²C)
-
-Raw data → cleaning → feature extraction → ML model → interpretation/recommendation
-
-Raspberry Pi (MQTT publish) → Mobile app (MQTT subscribe)
-
-Summaries and synced state: typically every 5–10 minutes for aggregated summaries;
-real-time vitals may be streamed at higher frequency depending on bandwidth and
-power constraints.
-
-## System strengths
-
-- On-device ML reduces cloud costs and dependency on internet connectivity.
-- Fully offline capability preserves privacy (data can stay on the local network).
-- Personalized, context-aware insights using fused multimodal signals.
-- Fast, reliable messaging using MQTT.
-- Modular design — scalable from prototype to commercial deployment.
-
-## Next steps & suggestions
-
-- Define data retention and privacy policies for local storage.
-- Add secure MQTT (TLS + authentication) for deployments that cross network
-	boundaries.
-- Create a lightweight mobile app prototype (MQTT client) for end-to-end testing.
-- Add automated tests for feature extraction and model inference (unit + integration).
-
-## License & contact
-
-Include appropriate license and author/contact information here.
-
----
-
-If you'd like, I can also:
-
-- Convert the MQTT topics into a publish/subscribe sequence diagram.
-- Generate a minimal mobile app mock that subscribes to the topics.
-- Add example payload formats for each MQTT topic.
-
-Tell me which of those you'd like next.
+- docs/USAGE.md
+- docs/DEVELOPER.md
