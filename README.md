@@ -95,5 +95,5 @@ the path inside the corresponding script.
 
 See the docs directory for step-by-step usage and developer notes:
 
-- docs/USAGE.md
-- docs/DEVELOPER.md
+- #docs/USAGE.md
+- #docs/DEVELOPER.md
