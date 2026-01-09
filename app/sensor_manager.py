@@ -7,7 +7,6 @@ Provides a SensorManager class that:
 2. Continuously reads and buffers sensor data
 3. Provides read_all_sensors() method that returns latest readings
 
-Compatible with the ActivityMonitor inference system.
 """
 
 import sys
@@ -254,18 +253,18 @@ class SensorManager:
                 if value is None:
                     # Provide reasonable defaults
                     defaults = { 
-                        'body_temp': 28.18,
-                        'ambient_temp': 32.65,
-                        'pressure_hpa': 900.08,
-                        'humidity_pct': 3.23,
-                        'accel_x': -1.93,
-                        'accel_y': 2.53,
-                        'accel_z': -3.46,
-                        'gyro_x': -163.49,
-                        'gyro_y': 22.95,
-                        'gyro_z': 123.31,
-                        'heart_rate_bpm': 90.86,
-                        'spo2_pct': 80.47
+            "body_temp": 30.2,
+            "ambient_temp": 31.33,
+            "pressure_hpa": 1000.1,
+            "humidity_pct": 79.56,
+            "accel_x": 1.09,
+            "accel_y": 7.01,
+            "accel_z": -1.04,
+            "gyro_x": -0.68,
+            "gyro_y": 8.17,
+            "gyro_z": 0.57,
+            "heart_rate_bpm": 108.0,
+            "spo2_pct": 96.6
                     }
                     value = defaults.get(feature, 0.0)
                 

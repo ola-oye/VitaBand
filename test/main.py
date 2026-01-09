@@ -15,21 +15,21 @@ import json
 
 # Import recommendation engine (required)
 try:
-    from recommendation_engine import RecommendationEngine
+    from app.recommendation_engine import RecommendationEngine
 except ImportError:
     print("ERROR: recommendation_engine.py not found! Make sure it is in the same directory.")
     sys.exit(1)
 
 # Import MQTT publisher (optional)
 try:
-    from mqtt_publisher import HealthMQTTPublisher
+    from app.mqtt_publisher import HealthMQTTPublisher
 except ImportError:
     print("WARNING: mqtt_publisher.py not found. MQTT publishing disabled.")
     HealthMQTTPublisher = None
 
 # Import mDNS service (optional)
 try:
-    from mdns_service import HealthMonitorService
+    from app.mdns_service import HealthMonitorService
 except ImportError:
     print("WARNING: mdns_service.py not found. mDNS service disabled.")
     HealthMonitorService = None

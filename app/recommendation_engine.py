@@ -2,7 +2,7 @@
 """
 RecommendationEngine
 - Structured, humanized explanations
-- Intensity scaling (mild/moderate/high)
+- Intensity scaling (mild/moderate/high) xxx
 - Priority-based multi-label logic
 - Short and detailed output modes
 - Clean, maintainable layout
@@ -11,11 +11,9 @@ RecommendationEngine
 from typing import List, Dict, Optional
 import random
 
-# -------------------------
-# Humanized text resources
-# -------------------------
+# Humanized Text Logic
 
-# Activity descriptions (humanized)
+# Activity descriptions
 ACTIVITY_DESCRIPTIONS = {
     "Resting": "Your body is calm and you're not doing any physical activity.",
     "Light activity": "You're moving lightly, maybe walking around or doing something small.",
@@ -150,13 +148,12 @@ INTRO_PHRASES = [
     "From what the data shows,"
 ]
 
-# -------------------------
+
 # Engine implementation
-# -------------------------
 
 class RecommendationEngine:
     """
-    RecommendationEngineV2:
+    RecommendationEngine:
       - Accepts predicted labels, optional intensity map, optional sensor data
       - Produces user-friendly explanations in 'short' or 'detailed' mode
     """
@@ -171,9 +168,9 @@ class RecommendationEngine:
         self.actions = RECOMMENDATION_ACTIONS
         self.priority = LABEL_PRIORITY
 
-    # -------------------------
-    # Utility helpers
-    # -------------------------
+   
+    # Utility Logic
+
     def _safe_format(self, value, decimals=1):
         """Format numeric sensor values safely."""
         try:
@@ -230,9 +227,8 @@ class RecommendationEngine:
         # fallback to general description
         return self.cond_desc.get(label, "")
 
-    # -------------------------
+
     # Core interpretation
-    # -------------------------
     def interpret(self,
                   predicted_labels: List[str],
                   sensor_data: Optional[Dict] = None,
@@ -361,10 +357,7 @@ class RecommendationEngine:
             "full_message": full_message
         }
 
-# -------------------------
-# Example usage (scenarios)
-# -------------------------
-
+# Example usage
 def _demo():
     engine = RecommendationEngine()
 
@@ -408,7 +401,7 @@ def _demo():
         {
             "name": "Scenario D — Critical + Possible fever + Overexertion",
             "labels": ["Critical", "Possible fever", "Overexertion"],
-            "intensity_map": {"Possible fever": "high", "Overexertion": "moderate"},
+            "intensity_map": None,
             "sensors": {
                 "body_temp": 39.5,
                 "heart_rate_bpm": 165,
@@ -423,13 +416,21 @@ def _demo():
         print("\n" + "="*70)
         print(s["name"])
         print("-"*70)
-        short = engine.interpret(s["labels"], s["intensity_map"], s["sensors"], mode="short")
-        detailed = engine.interpret(s["labels"], s["intensity_map"], s["sensors"], mode="detailed")
-        print("\nSHORT MODE:")
-        print(short["full_message"])
-        print("\nDETAILED MODE:")
-        print(detailed["full_message"])
-        print("="*70 + "\n")
 
+        detailed = engine.interpret(s["labels"], s["intensity_map"], s["sensors"], mode="detailed")
+        print("\nDETAILED MODE:")        
+        print(detailed["full_message"])
+        print(detailed["priority"])
+        # print(detailed["summary"])
+        # print(detailed["recommendation"])
+
+        # short = engine.interpret(s["labels"], s["intensity_map"], s["sensors"], mode="short")
+        # print("\nSHORT MODE:")
+        # print(short["full_message"])
+        # print(short["summary"])
+        # print(short["recommendation"])
+        # print(short["priority"])
+        print("="*70 + "\n")
+        
 if __name__ == "__main__":
     _demo()

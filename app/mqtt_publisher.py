@@ -67,10 +67,8 @@ class HealthMQTTPublisher:
 
         print(f"[INIT] MQTT Publisher initialized (Client ID: {client_id})")
 
-    # -----------------------------------------------------
-    # CONNECTION HANDLING
-    # -----------------------------------------------------
 
+    # CONNECTION HANDLING
     def connect(self):
         """Connect to MQTT broker with safety and timeout"""
 
@@ -114,23 +112,19 @@ class HealthMQTTPublisher:
             except Exception as e:
                 print(f"[ERROR] During disconnect: {e}")
 
-    # -----------------------------------------------------
-    # VALIDATION
-    # -----------------------------------------------------
 
+    # VALIDATION
     def _validate_result(self, result):
         """Ensure result contains all required fields"""
 
-        required = ["timestamp", "sensor_data", "active_labels", "num_active", "recommendation"]
+        required = ["timestamp", "sensor_data", "labels", "recommendation"]
 
         for key in required:
             if key not in result:
                 raise ValueError(f"Missing required key: '{key}'")
 
-    # -----------------------------------------------------
-    # MAIN PUBLISHING METHOD
-    # -----------------------------------------------------
 
+    # MAIN PUBLISHING METHOD
     def _publish(self, topic, message, qos=0, retain=False):
         """Safe publish with JSON conversion + publish confirmation"""
 
@@ -153,11 +147,9 @@ class HealthMQTTPublisher:
 
         print(f"[WARN] Publish to {topic} may not have completed")
         return False
+    
 
-    # -----------------------------------------------------
     # HEALTH UPDATE PUBLISHING
-    # -----------------------------------------------------
-
     def publish_health_update(self, result):
         """Publish all health updates in structured format"""
  
@@ -207,16 +199,14 @@ class HealthMQTTPublisher:
                 "timestamp": timestamp,
                 "level": rec["priority"],
                 "message": rec["full_message"],
-                "labels": result["active_labels"],
+                "labels": result["labels"],
             }
             self._publish(self.topics["alerts"], alert_msg, qos=2)
 
         return True
 
-    # -----------------------------------------------------
-    # HEARTBEAT
-    # -----------------------------------------------------
 
+    # HEARTBEAT
     def publish_heartbeat(self):
         """Publish retained heartbeat for monitoring dashboards"""
 
@@ -230,10 +220,8 @@ class HealthMQTTPublisher:
 
         self._publish(self.topics["heartbeat"], heartbeat_msg, retain=True)
 
-    # -----------------------------------------------------
-    # CALLBACKS
-    # -----------------------------------------------------
 
+    # CALLBACKS
     def _on_connect(self, client, userdata, flags, rc):
         if rc == 0:
             self.connected = True
@@ -255,10 +243,7 @@ class HealthMQTTPublisher:
     def _on_publish(self, client, userdata, mid):
         pass  # Optional logging
 
-
-# -----------------------------------------------------
-# SHUTDOWN (Ctrl+C)
-# -----------------------------------------------------
+# SHUTDOWN (Ctrl+C
 
 def enable_shutdown(publisher):
     def shutdown_handler(sig, frame):

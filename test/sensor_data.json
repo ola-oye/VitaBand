@@ -1,0 +1,2212 @@
+[
+    {
+        "timestamp": "2025-12-10T19:21:32.961146",
+        "readings": {
+            "body_temp": 30.1,
+            "ambient_temp": 31.15,
+            "pressure_hpa": 1007.1,
+            "humidity_pct": 70.0,
+            "accel_x": -0.09,
+            "accel_y": 0.02,
+            "accel_z": 1.04,
+            "gyro_x": -0.61,
+            "gyro_y": 2.37,
+            "gyro_z": 0.47,
+            "heart_rate_bpm": 75.0,
+            "spo2_pct": 95.89
+        }
+    },
+    {
+        "timestamp": "2025-12-10T19:21:34.962296",
+        "readings": {
+            "body_temp": 30.1,
+            "ambient_temp": 31.18,
+            "pressure_hpa": 1007.12,
+            "humidity_pct": 70.36,
+            "accel_x": -0.08,
+            "accel_y": 0.01,
+            "accel_z": 1.03,
+            "gyro_x": -5.27,
+            "gyro_y": 11.46,
+            "gyro_z": -0.16,
+            "heart_rate_bpm": 166.0,
+            "spo2_pct": 68.33
+        }
+    },
+    {
+        "timestamp": "2025-12-10T19:21:36.964638",
+        "readings": {
+            "body_temp": 30.2,
+            "ambient_temp": 31.19,
+            "pressure_hpa": 1007.05,
+            "humidity_pct": 70.12,
+            "accel_x": -0.09,
+            "accel_y": 0.01,
+            "accel_z": 1.04,
+            "gyro_x": -0.61,
+            "gyro_y": 2.22,
+            "gyro_z": 2.02,
+            "heart_rate_bpm": 166.0,
+            "spo2_pct": 68.33
+        }
+    },
+    {
+        "timestamp": "2025-12-10T19:21:38.966772",
+        "readings": {
+            "body_temp": 30.2,
+            "ambient_temp": 31.2,
+            "pressure_hpa": 1007.09,
+            "humidity_pct": 70.6,
+            "accel_x": -0.09,
+            "accel_y": 0.02,
+            "accel_z": 1.03,
+            "gyro_x": -0.71,
+            "gyro_y": 2.21,
+            "gyro_z": 0.6,
+            "heart_rate_bpm": 125.0,
+            "spo2_pct": 76.07
+        }
+    },
+    {
+        "timestamp": "2025-12-10T19:21:40.968406",
+        "readings": {
+            "body_temp": 30.2,
+            "ambient_temp": 31.19,
+            "pressure_hpa": 1007.11,
+            "humidity_pct": 70.41,
+            "accel_x": -0.08,
+            "accel_y": 0.01,
+            "accel_z": 1.02,
+            "gyro_x": -0.75,
+            "gyro_y": 2.88,
+            "gyro_z": 0.27,
+            "heart_rate_bpm": 125.0,
+            "spo2_pct": 76.07
+        }
+    },
+    {
+        "timestamp": "2025-12-10T19:21:42.972972",
+        "readings": {
+            "body_temp": 30.2,
+            "ambient_temp": 31.21,
+            "pressure_hpa": 1007.03,
+            "humidity_pct": 70.35,
+            "accel_x": -0.09,
+            "accel_y": 0.02,
+            "accel_z": 1.04,
+            "gyro_x": -0.67,
+            "gyro_y": 2.43,
+            "gyro_z": 0.78,
+            "heart_rate_bpm": 250.0,
+            "spo2_pct": 44.69
+        }
+    },
+    {
+        "timestamp": "2025-12-10T19:21:44.974894",
+        "readings": {
+            "body_temp": 30.2,
+            "ambient_temp": 31.22,
+            "pressure_hpa": 1007.11,
+            "humidity_pct": 70.18,
+            "accel_x": -0.09,
+            "accel_y": 0.01,
+            "accel_z": 1.03,
+            "gyro_x": -0.63,
+            "gyro_y": 2.23,
+            "gyro_z": 0.44,
+            "heart_rate_bpm": 250.0,
+            "spo2_pct": 44.69
+        }
+    },
+    {
+        "timestamp": "2025-12-10T19:21:46.977295",
+        "readings": {
+            "body_temp": 30.2,
+            "ambient_temp": 31.25,
+            "pressure_hpa": 1007.08,
+            "humidity_pct": 70.86,
+            "accel_x": -0.08,
+            "accel_y": 0.03,
+            "accel_z": 1.03,
+            "gyro_x": 0.3,
+            "gyro_y": 0.73,
+            "gyro_z": -2.56,
+            "heart_rate_bpm": 51.0,
+            "spo2_pct": 83.82
+        }
+    },
+    {
+        "timestamp": "2025-12-10T19:21:48.978360",
+        "readings": {
+            "body_temp": 30.2,
+            "ambient_temp": 31.26,
+            "pressure_hpa": 1007.1,
+            "humidity_pct": 70.01,
+            "accel_x": -0.09,
+            "accel_y": 0.02,
+            "accel_z": 1.03,
+            "gyro_x": 0.1,
+            "gyro_y": 0.93,
+            "gyro_z": 0.98,
+            "heart_rate_bpm": 51.0,
+            "spo2_pct": 83.82
+        }
+    },
+    {
+        "timestamp": "2025-12-10T19:21:50.980953",
+        "readings": {
+            "body_temp": 30.2,
+            "ambient_temp": 31.27,
+            "pressure_hpa": 1007.12,
+            "humidity_pct": 69.75,
+            "accel_x": -0.07,
+            "accel_y": 0.02,
+            "accel_z": 1.03,
+            "gyro_x": -1.0,
+            "gyro_y": 2.99,
+            "gyro_z": 0.38,
+            "heart_rate_bpm": 125.0,
+            "spo2_pct": 71.98
+        }
+    },
+    {
+        "timestamp": "2025-12-10T19:21:52.985985",
+        "readings": {
+            "body_temp": 30.2,
+            "ambient_temp": 31.28,
+            "pressure_hpa": 1007.14,
+            "humidity_pct": 70.05,
+            "accel_x": -0.09,
+            "accel_y": 0.01,
+            "accel_z": 1.03,
+            "gyro_x": -0.56,
+            "gyro_y": 2.38,
+            "gyro_z": 0.47,
+            "heart_rate_bpm": 125.0,
+            "spo2_pct": 71.98
+        }
+    },
+    {
+        "timestamp": "2025-12-10T19:21:54.987161",
+        "readings": {
+            "body_temp": 30.2,
+            "ambient_temp": 31.28,
+            "pressure_hpa": 1007.1,
+            "humidity_pct": 69.37,
+            "accel_x": -0.08,
+            "accel_y": 0.01,
+            "accel_z": 1.04,
+            "gyro_x": -0.9,
+            "gyro_y": 2.27,
+            "gyro_z": 0.42,
+            "heart_rate_bpm": 62.0,
+            "spo2_pct": 85.39
+        }
+    },
+    {
+        "timestamp": "2025-12-10T19:21:56.989733",
+        "readings": {
+            "body_temp": 30.2,
+            "ambient_temp": 31.28,
+            "pressure_hpa": 1007.1,
+            "humidity_pct": 69.89,
+            "accel_x": -0.09,
+            "accel_y": 0.01,
+            "accel_z": 1.03,
+            "gyro_x": -0.71,
+            "gyro_y": 2.47,
+            "gyro_z": 0.36,
+            "heart_rate_bpm": 62.0,
+            "spo2_pct": 85.39
+        }
+    },
+    {
+        "timestamp": "2025-12-10T19:21:58.990818",
+        "readings": {
+            "body_temp": 30.2,
+            "ambient_temp": 31.3,
+            "pressure_hpa": 1007.12,
+            "humidity_pct": 69.9,
+            "accel_x": -0.09,
+            "accel_y": 0.01,
+            "accel_z": 1.03,
+            "gyro_x": -0.7,
+            "gyro_y": 2.31,
+            "gyro_z": 0.55,
+            "heart_rate_bpm": 107.0,
+            "spo2_pct": 71.98
+        }
+    },
+    {
+        "timestamp": "2025-12-10T19:22:00.993378",
+        "readings": {
+            "body_temp": 30.2,
+            "ambient_temp": 31.31,
+            "pressure_hpa": 1007.07,
+            "humidity_pct": 69.92,
+            "accel_x": -0.09,
+            "accel_y": 0.01,
+            "accel_z": 1.04,
+            "gyro_x": -0.72,
+            "gyro_y": 2.51,
+            "gyro_z": 0.39,
+            "heart_rate_bpm": 107.0,
+            "spo2_pct": 71.98
+        }
+    },
+    {
+        "timestamp": "2025-12-10T19:22:03.000484",
+        "readings": {
+            "body_temp": 30.2,
+            "ambient_temp": 31.31,
+            "pressure_hpa": 1007.02,
+            "humidity_pct": 70.0,
+            "accel_x": -0.09,
+            "accel_y": 0.01,
+            "accel_z": 1.04,
+            "gyro_x": -0.63,
+            "gyro_y": 2.09,
+            "gyro_z": 0.56,
+            "heart_rate_bpm": 60.0,
+            "spo2_pct": 70.55
+        }
+    },
+    {
+        "timestamp": "2025-12-10T19:22:05.002011",
+        "readings": {
+            "body_temp": 30.3,
+            "ambient_temp": 31.33,
+            "pressure_hpa": 1007.05,
+            "humidity_pct": 69.67,
+            "accel_x": -0.09,
+            "accel_y": 0.01,
+            "accel_z": 1.03,
+            "gyro_x": -0.8,
+            "gyro_y": 2.33,
+            "gyro_z": 0.4,
+            "heart_rate_bpm": 60.0,
+            "spo2_pct": 70.55
+        }
+    },
+    {
+        "timestamp": "2025-12-10T19:22:07.004472",
+        "readings": {
+            "body_temp": 30.3,
+            "ambient_temp": 31.33,
+            "pressure_hpa": 1007.05,
+            "humidity_pct": 69.7,
+            "accel_x": -0.09,
+            "accel_y": 0.02,
+            "accel_z": 1.03,
+            "gyro_x": -0.63,
+            "gyro_y": 2.24,
+            "gyro_z": 0.47,
+            "heart_rate_bpm": 68.0,
+            "spo2_pct": 81.6
+        }
+    },
+    {
+        "timestamp": "2025-12-10T19:22:09.005518",
+        "readings": {
+            "body_temp": 30.2,
+            "ambient_temp": 31.33,
+            "pressure_hpa": 1007.1,
+            "humidity_pct": 69.56,
+            "accel_x": -0.09,
+            "accel_y": 0.01,
+            "accel_z": 1.04,
+            "gyro_x": -0.68,
+            "gyro_y": 2.17,
+            "gyro_z": 0.57,
+            "heart_rate_bpm": 68.0,
+            "spo2_pct": 81.6
+        }
+    },
+    {
+        "timestamp": "2025-12-10T19:22:11.010222",
+        "readings": {
+            "body_temp": 30.2,
+            "ambient_temp": 31.33,
+            "pressure_hpa": 1007.17,
+            "humidity_pct": 69.36,
+            "accel_x": 0.12,
+            "accel_y": 0.07,
+            "accel_z": 1.0,
+            "gyro_x": 12.89,
+            "gyro_y": -18.02,
+            "gyro_z": 3.34,
+            "heart_rate_bpm": 166.0,
+            "spo2_pct": 59.49
+        }
+    },
+    {
+        "timestamp": "2025-12-10T19:22:13.018097",
+        "readings": {
+            "body_temp": 30.2,
+            "ambient_temp": 31.31,
+            "pressure_hpa": 1007.19,
+            "humidity_pct": 69.49,
+            "accel_x": -0.06,
+            "accel_y": 0.06,
+            "accel_z": 1.07,
+            "gyro_x": 9.76,
+            "gyro_y": -14.41,
+            "gyro_z": -1.98,
+            "heart_rate_bpm": 166.0,
+            "spo2_pct": 59.49
+        }
+    },
+    {
+        "timestamp": "2025-12-10T19:22:15.022937",
+        "readings": {
+            "body_temp": 30.2,
+            "ambient_temp": 31.31,
+            "pressure_hpa": 1007.19,
+            "humidity_pct": 69.92,
+            "accel_x": -0.11,
+            "accel_y": -0.02,
+            "accel_z": 1.04,
+            "gyro_x": -2.35,
+            "gyro_y": 7.83,
+            "gyro_z": -4.05,
+            "heart_rate_bpm": 62.0,
+            "spo2_pct": 99.73
+        }
+    },
+    {
+        "timestamp": "2025-12-10T19:22:17.025667",
+        "readings": {
+            "body_temp": 30.5,
+            "ambient_temp": 31.33,
+            "pressure_hpa": 1007.07,
+            "humidity_pct": 70.34,
+            "accel_x": -0.07,
+            "accel_y": -0.21,
+            "accel_z": 1.02,
+            "gyro_x": -3.06,
+            "gyro_y": 2.07,
+            "gyro_z": 4.08,
+            "heart_rate_bpm": 62.0,
+            "spo2_pct": 99.73
+        }
+    },
+    {
+        "timestamp": "2025-12-10T19:22:19.028771",
+        "readings": {
+            "body_temp": 30.8,
+            "ambient_temp": 31.33,
+            "pressure_hpa": 1007.1,
+            "humidity_pct": 70.36,
+            "accel_x": -0.1,
+            "accel_y": -0.24,
+            "accel_z": 0.99,
+            "gyro_x": -8.53,
+            "gyro_y": 4.87,
+            "gyro_z": 1.62,
+            "heart_rate_bpm": 125.0,
+            "spo2_pct": 73.38
+        }
+    },
+    {
+        "timestamp": "2025-12-10T19:22:21.032025",
+        "readings": {
+            "body_temp": 30.7,
+            "ambient_temp": 31.33,
+            "pressure_hpa": 1007.05,
+            "humidity_pct": 70.01,
+            "accel_x": -0.1,
+            "accel_y": -0.24,
+            "accel_z": 0.99,
+            "gyro_x": -8.53,
+            "gyro_y": 4.87,
+            "gyro_z": 1.62,
+            "heart_rate_bpm": 125.0,
+            "spo2_pct": 73.38
+        }
+    },
+    {
+        "timestamp": "2025-12-10T19:22:23.041534",
+        "readings": {
+            "body_temp": 30.8,
+            "ambient_temp": 31.34,
+            "pressure_hpa": 1007.13,
+            "humidity_pct": 69.48,
+            "accel_x": -0.1,
+            "accel_y": -0.24,
+            "accel_z": 0.99,
+            "gyro_x": -8.53,
+            "gyro_y": 4.87,
+            "gyro_z": 1.62,
+            "heart_rate_bpm": 136.0,
+            "spo2_pct": 62.01
+        }
+    },
+    {
+        "timestamp": "2025-12-10T19:22:25.044325",
+        "readings": {
+            "body_temp": 31.0,
+            "ambient_temp": 31.36,
+            "pressure_hpa": 1007.15,
+            "humidity_pct": 69.74,
+            "accel_x": -0.1,
+            "accel_y": -0.24,
+            "accel_z": 0.99,
+            "gyro_x": -8.53,
+            "gyro_y": 4.87,
+            "gyro_z": 1.62,
+            "heart_rate_bpm": 136.0,
+            "spo2_pct": 62.01
+        }
+    },
+    {
+        "timestamp": "2025-12-10T19:22:27.045821",
+        "readings": {
+            "body_temp": 31.2,
+            "ambient_temp": 31.37,
+            "pressure_hpa": 1007.2,
+            "humidity_pct": 69.78,
+            "accel_x": -0.1,
+            "accel_y": -0.24,
+            "accel_z": 0.99,
+            "gyro_x": -8.53,
+            "gyro_y": 4.87,
+            "gyro_z": 1.62,
+            "heart_rate_bpm": 115.0,
+            "spo2_pct": 99.67
+        }
+    },
+    {
+        "timestamp": "2025-12-10T19:22:29.046883",
+        "readings": {
+            "body_temp": 31.0,
+            "ambient_temp": 31.37,
+            "pressure_hpa": 1007.06,
+            "humidity_pct": 69.73,
+            "accel_x": -0.1,
+            "accel_y": -0.24,
+            "accel_z": 0.99,
+            "gyro_x": -8.53,
+            "gyro_y": 4.87,
+            "gyro_z": 1.62,
+            "heart_rate_bpm": 115.0,
+            "spo2_pct": 99.67
+        }
+    },
+    {
+        "timestamp": "2025-12-10T19:22:31.051492",
+        "readings": {
+            "body_temp": 30.9,
+            "ambient_temp": 31.38,
+            "pressure_hpa": 1007.16,
+            "humidity_pct": 70.46,
+            "accel_x": -0.1,
+            "accel_y": -0.24,
+            "accel_z": 0.99,
+            "gyro_x": -8.53,
+            "gyro_y": 4.87,
+            "gyro_z": 1.62,
+            "heart_rate_bpm": 150.0,
+            "spo2_pct": 21.76
+        }
+    },
+    {
+        "timestamp": "2025-12-10T19:22:33.063732",
+        "readings": {
+            "body_temp": 30.9,
+            "ambient_temp": 31.39,
+            "pressure_hpa": 1007.15,
+            "humidity_pct": 70.33,
+            "accel_x": -0.1,
+            "accel_y": -0.24,
+            "accel_z": 0.99,
+            "gyro_x": -8.53,
+            "gyro_y": 4.87,
+            "gyro_z": 1.62,
+            "heart_rate_bpm": 150.0,
+            "spo2_pct": 21.76
+        }
+    },
+    {
+        "timestamp": "2025-12-10T19:22:35.064900",
+        "readings": {
+            "body_temp": 30.8,
+            "ambient_temp": 31.39,
+            "pressure_hpa": 1007.14,
+            "humidity_pct": 69.97,
+            "accel_x": -0.1,
+            "accel_y": -0.24,
+            "accel_z": 0.99,
+            "gyro_x": -8.53,
+            "gyro_y": 4.87,
+            "gyro_z": 1.62,
+            "heart_rate_bpm": 33.0,
+            "spo2_pct": 99.73
+        }
+    },
+    {
+        "timestamp": "2025-12-10T19:22:37.067760",
+        "readings": {
+            "body_temp": 30.7,
+            "ambient_temp": 31.4,
+            "pressure_hpa": 1007.16,
+            "humidity_pct": 70.07,
+            "accel_x": -0.1,
+            "accel_y": -0.24,
+            "accel_z": 0.99,
+            "gyro_x": -8.53,
+            "gyro_y": 4.87,
+            "gyro_z": 1.62,
+            "heart_rate_bpm": 33.0,
+            "spo2_pct": 99.73
+        }
+    },
+    {
+        "timestamp": "2025-12-10T19:22:39.068921",
+        "readings": {
+            "body_temp": 30.6,
+            "ambient_temp": 31.38,
+            "pressure_hpa": 1007.11,
+            "humidity_pct": 69.68,
+            "accel_x": -0.1,
+            "accel_y": -0.24,
+            "accel_z": 0.99,
+            "gyro_x": -8.53,
+            "gyro_y": 4.87,
+            "gyro_z": 1.62,
+            "heart_rate_bpm": 33.0,
+            "spo2_pct": 99.73
+        }
+    },
+    {
+        "timestamp": "2025-12-10T19:22:41.071829",
+        "readings": {
+            "body_temp": 30.6,
+            "ambient_temp": 31.38,
+            "pressure_hpa": 1007.08,
+            "humidity_pct": 69.7,
+            "accel_x": -0.1,
+            "accel_y": -0.24,
+            "accel_z": 0.99,
+            "gyro_x": -8.53,
+            "gyro_y": 4.87,
+            "gyro_z": 1.62,
+            "heart_rate_bpm": 33.0,
+            "spo2_pct": 99.73
+        }
+    },
+    {
+        "timestamp": "2025-12-10T19:22:43.084659",
+        "readings": {
+            "body_temp": 30.5,
+            "ambient_temp": 31.38,
+            "pressure_hpa": 1007.08,
+            "humidity_pct": 70.23,
+            "accel_x": -0.1,
+            "accel_y": -0.24,
+            "accel_z": 0.99,
+            "gyro_x": -8.53,
+            "gyro_y": 4.87,
+            "gyro_z": 1.62,
+            "heart_rate_bpm": 115.0,
+            "spo2_pct": 95.71
+        }
+    },
+    {
+        "timestamp": "2025-12-10T19:22:45.085890",
+        "readings": {
+            "body_temp": 30.5,
+            "ambient_temp": 31.39,
+            "pressure_hpa": 1007.1,
+            "humidity_pct": 70.49,
+            "accel_x": -0.1,
+            "accel_y": -0.24,
+            "accel_z": 0.99,
+            "gyro_x": -8.53,
+            "gyro_y": 4.87,
+            "gyro_z": 1.62,
+            "heart_rate_bpm": 115.0,
+            "spo2_pct": 95.71
+        }
+    },
+    {
+        "timestamp": "2025-12-10T19:22:47.089179",
+        "readings": {
+            "body_temp": 30.4,
+            "ambient_temp": 31.41,
+            "pressure_hpa": 1007.01,
+            "humidity_pct": 71.4,
+            "accel_x": -0.1,
+            "accel_y": -0.24,
+            "accel_z": 0.99,
+            "gyro_x": -8.53,
+            "gyro_y": 4.87,
+            "gyro_z": 1.62,
+            "heart_rate_bpm": 88.0,
+            "spo2_pct": 93.12
+        }
+    },
+    {
+        "timestamp": "2025-12-10T19:22:49.090403",
+        "readings": {
+            "body_temp": 30.4,
+            "ambient_temp": 31.42,
+            "pressure_hpa": 1007.06,
+            "humidity_pct": 72.02,
+            "accel_x": -0.1,
+            "accel_y": -0.24,
+            "accel_z": 0.99,
+            "gyro_x": -8.53,
+            "gyro_y": 4.87,
+            "gyro_z": 1.62,
+            "heart_rate_bpm": 88.0,
+            "spo2_pct": 93.12
+        }
+    },
+    {
+        "timestamp": "2025-12-10T19:22:51.094918",
+        "readings": {
+            "body_temp": 30.4,
+            "ambient_temp": 31.42,
+            "pressure_hpa": 1007.03,
+            "humidity_pct": 71.74,
+            "accel_x": -0.1,
+            "accel_y": -0.24,
+            "accel_z": 0.99,
+            "gyro_x": -8.53,
+            "gyro_y": 4.87,
+            "gyro_z": 1.62,
+            "heart_rate_bpm": 125.0,
+            "spo2_pct": 22.94
+        }
+    },
+    {
+        "timestamp": "2025-12-10T19:22:53.110918",
+        "readings": {
+            "body_temp": 30.4,
+            "ambient_temp": 31.43,
+            "pressure_hpa": 1007.04,
+            "humidity_pct": 72.17,
+            "accel_x": -0.1,
+            "accel_y": -0.24,
+            "accel_z": 0.99,
+            "gyro_x": -8.53,
+            "gyro_y": 4.87,
+            "gyro_z": 1.62,
+            "heart_rate_bpm": 125.0,
+            "spo2_pct": 22.94
+        }
+    },
+    {
+        "timestamp": "2025-12-10T19:22:55.115323",
+        "readings": {
+            "body_temp": 30.4,
+            "ambient_temp": 31.44,
+            "pressure_hpa": 1007.07,
+            "humidity_pct": 72.49,
+            "accel_x": -0.1,
+            "accel_y": -0.24,
+            "accel_z": 0.99,
+            "gyro_x": -8.53,
+            "gyro_y": 4.87,
+            "gyro_z": 1.62,
+            "heart_rate_bpm": 187.0,
+            "spo2_pct": 99.52
+        }
+    },
+    {
+        "timestamp": "2025-12-10T19:22:57.117854",
+        "readings": {
+            "body_temp": 30.4,
+            "ambient_temp": 31.45,
+            "pressure_hpa": 1007.07,
+            "humidity_pct": 73.55,
+            "accel_x": -0.1,
+            "accel_y": -0.24,
+            "accel_z": 0.99,
+            "gyro_x": -8.53,
+            "gyro_y": 4.87,
+            "gyro_z": 1.62,
+            "heart_rate_bpm": 187.0,
+            "spo2_pct": 99.52
+        }
+    },
+    {
+        "timestamp": "2025-12-10T19:22:59.121946",
+        "readings": {
+            "body_temp": 30.4,
+            "ambient_temp": 31.46,
+            "pressure_hpa": 1007.15,
+            "humidity_pct": 71.73,
+            "accel_x": -0.1,
+            "accel_y": -0.24,
+            "accel_z": 0.99,
+            "gyro_x": -8.53,
+            "gyro_y": 4.87,
+            "gyro_z": 1.62,
+            "heart_rate_bpm": 107.0,
+            "spo2_pct": 2.95
+        }
+    },
+    {
+        "timestamp": "2025-12-10T19:23:01.123176",
+        "readings": {
+            "body_temp": 30.3,
+            "ambient_temp": 31.45,
+            "pressure_hpa": 1007.07,
+            "humidity_pct": 71.52,
+            "accel_x": -0.1,
+            "accel_y": -0.24,
+            "accel_z": 0.99,
+            "gyro_x": -8.53,
+            "gyro_y": 4.87,
+            "gyro_z": 1.62,
+            "heart_rate_bpm": 107.0,
+            "spo2_pct": 2.95
+        }
+    },
+    {
+        "timestamp": "2025-12-10T19:23:03.141840",
+        "readings": {
+            "body_temp": 30.2,
+            "ambient_temp": 31.45,
+            "pressure_hpa": 1007.08,
+            "humidity_pct": 70.52,
+            "accel_x": -0.1,
+            "accel_y": -0.24,
+            "accel_z": 0.99,
+            "gyro_x": -8.53,
+            "gyro_y": 4.87,
+            "gyro_z": 1.62,
+            "heart_rate_bpm": 83.0,
+            "spo2_pct": 98.29
+        }
+    },
+    {
+        "timestamp": "2025-12-10T19:23:05.144421",
+        "readings": {
+            "body_temp": 30.2,
+            "ambient_temp": 31.45,
+            "pressure_hpa": 1007.07,
+            "humidity_pct": 70.71,
+            "accel_x": -0.1,
+            "accel_y": -0.24,
+            "accel_z": 0.99,
+            "gyro_x": -8.53,
+            "gyro_y": 4.87,
+            "gyro_z": 1.62,
+            "heart_rate_bpm": 83.0,
+            "spo2_pct": 98.29
+        }
+    },
+    {
+        "timestamp": "2025-12-10T19:23:07.148649",
+        "readings": {
+            "body_temp": 30.2,
+            "ambient_temp": 31.44,
+            "pressure_hpa": 1007.12,
+            "humidity_pct": 70.17,
+            "accel_x": -0.1,
+            "accel_y": -0.24,
+            "accel_z": 0.99,
+            "gyro_x": -8.53,
+            "gyro_y": 4.87,
+            "gyro_z": 1.62,
+            "heart_rate_bpm": 83.0,
+            "spo2_pct": 98.29
+        }
+    },
+    {
+        "timestamp": "2025-12-10T19:23:09.149924",
+        "readings": {
+            "body_temp": 30.2,
+            "ambient_temp": 31.46,
+            "pressure_hpa": 1007.13,
+            "humidity_pct": 71.07,
+            "accel_x": -0.1,
+            "accel_y": -0.24,
+            "accel_z": 0.99,
+            "gyro_x": -8.53,
+            "gyro_y": 4.87,
+            "gyro_z": 1.62,
+            "heart_rate_bpm": 83.0,
+            "spo2_pct": 98.29
+        }
+    },
+    {
+        "timestamp": "2025-12-10T19:23:11.154376",
+        "readings": {
+            "body_temp": 30.2,
+            "ambient_temp": 31.47,
+            "pressure_hpa": 1007.11,
+            "humidity_pct": 70.84,
+            "accel_x": -0.1,
+            "accel_y": -0.24,
+            "accel_z": 0.99,
+            "gyro_x": -8.53,
+            "gyro_y": 4.87,
+            "gyro_z": 1.62,
+            "heart_rate_bpm": 57.0,
+            "spo2_pct": 99.81
+        }
+    },
+    {
+        "timestamp": "2025-12-10T19:23:13.174532",
+        "readings": {
+            "body_temp": 30.2,
+            "ambient_temp": 31.46,
+            "pressure_hpa": 1007.04,
+            "humidity_pct": 70.72,
+            "accel_x": -0.1,
+            "accel_y": -0.24,
+            "accel_z": 0.99,
+            "gyro_x": -8.53,
+            "gyro_y": 4.87,
+            "gyro_z": 1.62,
+            "heart_rate_bpm": 57.0,
+            "spo2_pct": 99.81
+        }
+    },
+    {
+        "timestamp": "2025-12-10T19:29:27.752478",
+        "readings": {
+            "body_temp": 30.3,
+            "ambient_temp": 31.23,
+            "pressure_hpa": 1007.31,
+            "humidity_pct": 73.34,
+            "accel_x": -0.14,
+            "accel_y": 0.04,
+            "accel_z": 1.05,
+            "gyro_x": 22.72,
+            "gyro_y": -4.76,
+            "gyro_z": 1.52,
+            "heart_rate_bpm": 34.0,
+            "spo2_pct": 87.84
+        }
+    },
+    {
+        "timestamp": "2025-12-10T19:29:29.754993",
+        "readings": {
+            "body_temp": 30.3,
+            "ambient_temp": 31.25,
+            "pressure_hpa": 1007.28,
+            "humidity_pct": 73.49,
+            "accel_x": -0.15,
+            "accel_y": 0.09,
+            "accel_z": 1.02,
+            "gyro_x": -7.85,
+            "gyro_y": 4.22,
+            "gyro_z": -12.52,
+            "heart_rate_bpm": 83.0,
+            "spo2_pct": 97.54
+        }
+    },
+    {
+        "timestamp": "2025-12-10T19:29:31.759843",
+        "readings": {
+            "body_temp": 30.4,
+            "ambient_temp": 31.26,
+            "pressure_hpa": 1007.27,
+            "humidity_pct": 73.41,
+            "accel_x": -0.14,
+            "accel_y": -0.03,
+            "accel_z": 0.94,
+            "gyro_x": -17.97,
+            "gyro_y": 5.37,
+            "gyro_z": -0.18,
+            "heart_rate_bpm": 83.0,
+            "spo2_pct": 97.54
+        }
+    },
+    {
+        "timestamp": "2025-12-10T19:29:33.764291",
+        "readings": {
+            "body_temp": 30.4,
+            "ambient_temp": 31.26,
+            "pressure_hpa": 1007.25,
+            "humidity_pct": 72.0,
+            "accel_x": -0.09,
+            "accel_y": 0.03,
+            "accel_z": 1.02,
+            "gyro_x": -3.92,
+            "gyro_y": 4.54,
+            "gyro_z": -8.34,
+            "heart_rate_bpm": 150.0,
+            "spo2_pct": 99.71
+        }
+    },
+    {
+        "timestamp": "2025-12-10T19:29:35.784728",
+        "readings": {
+            "body_temp": 30.4,
+            "ambient_temp": 31.28,
+            "pressure_hpa": 1007.22,
+            "humidity_pct": 72.02,
+            "accel_x": -0.01,
+            "accel_y": -0.04,
+            "accel_z": 1.0,
+            "gyro_x": -21.27,
+            "gyro_y": -2.08,
+            "gyro_z": -13.63,
+            "heart_rate_bpm": 150.0,
+            "spo2_pct": 99.71
+        }
+    },
+    {
+        "timestamp": "2025-12-10T19:29:37.790127",
+        "readings": {
+            "body_temp": 30.4,
+            "ambient_temp": 31.31,
+            "pressure_hpa": 1007.27,
+            "humidity_pct": 73.18,
+            "accel_x": -0.12,
+            "accel_y": 0.14,
+            "accel_z": 0.99,
+            "gyro_x": 13.47,
+            "gyro_y": 12.12,
+            "gyro_z": -21.97,
+            "heart_rate_bpm": 136.0,
+            "spo2_pct": 48.6
+        }
+    },
+    {
+        "timestamp": "2025-12-10T19:29:39.791335",
+        "readings": {
+            "body_temp": 30.4,
+            "ambient_temp": 31.31,
+            "pressure_hpa": 1007.24,
+            "humidity_pct": 72.24,
+            "accel_x": -0.13,
+            "accel_y": 0.06,
+            "accel_z": 1.07,
+            "gyro_x": 3.84,
+            "gyro_y": 18.96,
+            "gyro_z": 15.79,
+            "heart_rate_bpm": 136.0,
+            "spo2_pct": 48.6
+        }
+    },
+    {
+        "timestamp": "2025-12-10T19:29:41.792480",
+        "readings": {
+            "body_temp": 30.4,
+            "ambient_temp": 31.32,
+            "pressure_hpa": 1007.29,
+            "humidity_pct": 72.29,
+            "accel_x": -0.22,
+            "accel_y": -0.01,
+            "accel_z": 1.02,
+            "gyro_x": -7.43,
+            "gyro_y": 10.82,
+            "gyro_z": 5.39,
+            "heart_rate_bpm": 107.0,
+            "spo2_pct": 86.89
+        }
+    },
+    {
+        "timestamp": "2025-12-10T19:29:43.797061",
+        "readings": {
+            "body_temp": 30.4,
+            "ambient_temp": 31.35,
+            "pressure_hpa": 1007.28,
+            "humidity_pct": 72.47,
+            "accel_x": -0.17,
+            "accel_y": 0.04,
+            "accel_z": 1.03,
+            "gyro_x": 3.01,
+            "gyro_y": 3.63,
+            "gyro_z": 12.21,
+            "heart_rate_bpm": 107.0,
+            "spo2_pct": 86.89
+        }
+    },
+    {
+        "timestamp": "2025-12-10T19:29:45.816864",
+        "readings": {
+            "body_temp": 30.4,
+            "ambient_temp": 31.37,
+            "pressure_hpa": 1007.34,
+            "humidity_pct": 71.74,
+            "accel_x": -0.09,
+            "accel_y": -0.01,
+            "accel_z": 0.98,
+            "gyro_x": -17.01,
+            "gyro_y": 6.55,
+            "gyro_z": -9.53,
+            "heart_rate_bpm": 115.0,
+            "spo2_pct": 74.07
+        }
+    },
+    {
+        "timestamp": "2025-12-10T19:29:47.818038",
+        "readings": {
+            "body_temp": 30.4,
+            "ambient_temp": 31.39,
+            "pressure_hpa": 1007.26,
+            "humidity_pct": 72.16,
+            "accel_x": -0.18,
+            "accel_y": 0.01,
+            "accel_z": 1.05,
+            "gyro_x": 3.91,
+            "gyro_y": -6.96,
+            "gyro_z": 20.85,
+            "heart_rate_bpm": 115.0,
+            "spo2_pct": 74.07
+        }
+    },
+    {
+        "timestamp": "2025-12-10T19:29:49.822413",
+        "readings": {
+            "body_temp": 30.4,
+            "ambient_temp": 31.4,
+            "pressure_hpa": 1007.25,
+            "humidity_pct": 73.11,
+            "accel_x": -0.11,
+            "accel_y": -0.02,
+            "accel_z": 1.03,
+            "gyro_x": 0.06,
+            "gyro_y": -2.34,
+            "gyro_z": -1.06,
+            "heart_rate_bpm": 150.0,
+            "spo2_pct": 99.73
+        }
+    },
+    {
+        "timestamp": "2025-12-10T19:29:51.823696",
+        "readings": {
+            "body_temp": 30.4,
+            "ambient_temp": 31.4,
+            "pressure_hpa": 1007.2,
+            "humidity_pct": 73.56,
+            "accel_x": -0.05,
+            "accel_y": -0.0,
+            "accel_z": 1.03,
+            "gyro_x": -11.06,
+            "gyro_y": 0.17,
+            "gyro_z": -10.16,
+            "heart_rate_bpm": 150.0,
+            "spo2_pct": 99.73
+        }
+    },
+    {
+        "timestamp": "2025-12-10T19:29:53.824860",
+        "readings": {
+            "body_temp": 30.4,
+            "ambient_temp": 31.41,
+            "pressure_hpa": 1007.21,
+            "humidity_pct": 72.58,
+            "accel_x": -0.12,
+            "accel_y": 0.0,
+            "accel_z": 1.03,
+            "gyro_x": 6.68,
+            "gyro_y": 4.72,
+            "gyro_z": 1.68,
+            "heart_rate_bpm": 83.0,
+            "spo2_pct": 97.74
+        }
+    },
+    {
+        "timestamp": "2025-12-10T19:29:55.850295",
+        "readings": {
+            "body_temp": 30.4,
+            "ambient_temp": 31.43,
+            "pressure_hpa": 1007.27,
+            "humidity_pct": 74.14,
+            "accel_x": -0.16,
+            "accel_y": 0.06,
+            "accel_z": 1.01,
+            "gyro_x": -3.79,
+            "gyro_y": -2.1,
+            "gyro_z": -8.89,
+            "heart_rate_bpm": 83.0,
+            "spo2_pct": 97.74
+        }
+    },
+    {
+        "timestamp": "2025-12-10T19:29:57.851601",
+        "readings": {
+            "body_temp": 30.4,
+            "ambient_temp": 31.44,
+            "pressure_hpa": 1007.23,
+            "humidity_pct": 73.51,
+            "accel_x": -0.12,
+            "accel_y": -0.01,
+            "accel_z": 1.06,
+            "gyro_x": 4.31,
+            "gyro_y": 5.89,
+            "gyro_z": 13.05,
+            "heart_rate_bpm": 53.0,
+            "spo2_pct": 69.07
+        }
+    },
+    {
+        "timestamp": "2025-12-10T19:29:59.854407",
+        "readings": {
+            "body_temp": 30.4,
+            "ambient_temp": 31.46,
+            "pressure_hpa": 1007.26,
+            "humidity_pct": 73.79,
+            "accel_x": -0.14,
+            "accel_y": -0.02,
+            "accel_z": 1.06,
+            "gyro_x": 5.59,
+            "gyro_y": -1.23,
+            "gyro_z": -0.27,
+            "heart_rate_bpm": 53.0,
+            "spo2_pct": 69.07
+        }
+    },
+    {
+        "timestamp": "2025-12-10T19:30:01.855589",
+        "readings": {
+            "body_temp": 30.4,
+            "ambient_temp": 31.46,
+            "pressure_hpa": 1007.24,
+            "humidity_pct": 74.52,
+            "accel_x": -0.11,
+            "accel_y": -0.03,
+            "accel_z": 1.04,
+            "gyro_x": -10.27,
+            "gyro_y": -4.76,
+            "gyro_z": -2.32,
+            "heart_rate_bpm": 100.0,
+            "spo2_pct": 90.87
+        }
+    },
+    {
+        "timestamp": "2025-12-10T19:30:03.858312",
+        "readings": {
+            "body_temp": 30.4,
+            "ambient_temp": 31.5,
+            "pressure_hpa": 1007.27,
+            "humidity_pct": 75.9,
+            "accel_x": -0.07,
+            "accel_y": -0.01,
+            "accel_z": 1.03,
+            "gyro_x": 2.95,
+            "gyro_y": -4.47,
+            "gyro_z": -0.18,
+            "heart_rate_bpm": 100.0,
+            "spo2_pct": 90.87
+        }
+    },
+    {
+        "timestamp": "2025-12-10T19:30:05.880271",
+        "readings": {
+            "body_temp": 30.3,
+            "ambient_temp": 31.5,
+            "pressure_hpa": 1007.22,
+            "humidity_pct": 75.9,
+            "accel_x": -0.1,
+            "accel_y": 0.0,
+            "accel_z": 1.07,
+            "gyro_x": 5.76,
+            "gyro_y": -0.39,
+            "gyro_z": -4.82,
+            "heart_rate_bpm": 125.0,
+            "spo2_pct": 98.29
+        }
+    },
+    {
+        "timestamp": "2025-12-10T19:30:07.883123",
+        "readings": {
+            "body_temp": 30.4,
+            "ambient_temp": 31.51,
+            "pressure_hpa": 1007.28,
+            "humidity_pct": 75.29,
+            "accel_x": -0.09,
+            "accel_y": -0.06,
+            "accel_z": 1.02,
+            "gyro_x": -4.04,
+            "gyro_y": 3.49,
+            "gyro_z": -1.66,
+            "heart_rate_bpm": 125.0,
+            "spo2_pct": 98.29
+        }
+    },
+    {
+        "timestamp": "2025-12-10T19:30:09.884770",
+        "readings": {
+            "body_temp": 30.3,
+            "ambient_temp": 31.51,
+            "pressure_hpa": 1007.24,
+            "humidity_pct": 75.0,
+            "accel_x": -0.08,
+            "accel_y": -0.06,
+            "accel_z": 1.06,
+            "gyro_x": 0.37,
+            "gyro_y": 1.01,
+            "gyro_z": 0.58,
+            "heart_rate_bpm": 166.0,
+            "spo2_pct": 99.84
+        }
+    },
+    {
+        "timestamp": "2025-12-10T19:30:11.886686",
+        "readings": {
+            "body_temp": 30.3,
+            "ambient_temp": 31.53,
+            "pressure_hpa": 1007.27,
+            "humidity_pct": 74.99,
+            "accel_x": -0.13,
+            "accel_y": -0.07,
+            "accel_z": 1.02,
+            "gyro_x": 12.54,
+            "gyro_y": 4.83,
+            "gyro_z": 3.14,
+            "heart_rate_bpm": 166.0,
+            "spo2_pct": 99.84
+        }
+    },
+    {
+        "timestamp": "2025-12-10T19:30:13.888757",
+        "readings": {
+            "body_temp": 30.3,
+            "ambient_temp": 31.54,
+            "pressure_hpa": 1007.29,
+            "humidity_pct": 73.4,
+            "accel_x": -0.08,
+            "accel_y": -0.01,
+            "accel_z": 1.03,
+            "gyro_x": 1.81,
+            "gyro_y": 4.47,
+            "gyro_z": 4.51,
+            "heart_rate_bpm": 150.0,
+            "spo2_pct": 92.04
+        }
+    },
+    {
+        "timestamp": "2025-12-10T19:30:15.915468",
+        "readings": {
+            "body_temp": 30.3,
+            "ambient_temp": 31.53,
+            "pressure_hpa": 1007.26,
+            "humidity_pct": 72.61,
+            "accel_x": -0.04,
+            "accel_y": 0.03,
+            "accel_z": 1.04,
+            "gyro_x": -6.08,
+            "gyro_y": 1.96,
+            "gyro_z": -2.64,
+            "heart_rate_bpm": 150.0,
+            "spo2_pct": 92.04
+        }
+    },
+    {
+        "timestamp": "2025-12-10T19:30:17.918464",
+        "readings": {
+            "body_temp": 30.3,
+            "ambient_temp": 31.54,
+            "pressure_hpa": 1007.28,
+            "humidity_pct": 72.78,
+            "accel_x": -0.02,
+            "accel_y": -0.02,
+            "accel_z": 1.02,
+            "gyro_x": -17.21,
+            "gyro_y": 1.15,
+            "gyro_z": -2.65,
+            "heart_rate_bpm": 214.0,
+            "spo2_pct": 76.72
+        }
+    },
+    {
+        "timestamp": "2025-12-10T19:30:19.919776",
+        "readings": {
+            "body_temp": 30.3,
+            "ambient_temp": 31.55,
+            "pressure_hpa": 1007.22,
+            "humidity_pct": 72.85,
+            "accel_x": -0.01,
+            "accel_y": -0.0,
+            "accel_z": 1.04,
+            "gyro_x": 7.5,
+            "gyro_y": 6.08,
+            "gyro_z": 10.35,
+            "heart_rate_bpm": 214.0,
+            "spo2_pct": 76.72
+        }
+    },
+    {
+        "timestamp": "2025-12-10T19:30:21.920865",
+        "readings": {
+            "body_temp": 30.4,
+            "ambient_temp": 31.57,
+            "pressure_hpa": 1007.27,
+            "humidity_pct": 74.61,
+            "accel_x": -0.07,
+            "accel_y": -0.01,
+            "accel_z": 1.03,
+            "gyro_x": 9.33,
+            "gyro_y": 9.73,
+            "gyro_z": -15.44,
+            "heart_rate_bpm": 75.0,
+            "spo2_pct": 21.76
+        }
+    },
+    {
+        "timestamp": "2025-12-10T19:30:23.923668",
+        "readings": {
+            "body_temp": 30.4,
+            "ambient_temp": 31.57,
+            "pressure_hpa": 1007.33,
+            "humidity_pct": 75.04,
+            "accel_x": -0.16,
+            "accel_y": -0.08,
+            "accel_z": 1.05,
+            "gyro_x": -13.85,
+            "gyro_y": -1.09,
+            "gyro_z": 7.49,
+            "heart_rate_bpm": 75.0,
+            "spo2_pct": 21.76
+        }
+    },
+    {
+        "timestamp": "2025-12-10T19:30:25.948586",
+        "readings": {
+            "body_temp": 30.6,
+            "ambient_temp": 31.58,
+            "pressure_hpa": 1007.29,
+            "humidity_pct": 74.58,
+            "accel_x": -0.16,
+            "accel_y": -0.06,
+            "accel_z": 1.01,
+            "gyro_x": -0.89,
+            "gyro_y": -0.93,
+            "gyro_z": 3.11,
+            "heart_rate_bpm": 136.0,
+            "spo2_pct": 19.37
+        }
+    },
+    {
+        "timestamp": "2025-12-10T19:30:27.950920",
+        "readings": {
+            "body_temp": 30.5,
+            "ambient_temp": 31.58,
+            "pressure_hpa": 1007.24,
+            "humidity_pct": 73.56,
+            "accel_x": -0.17,
+            "accel_y": -0.05,
+            "accel_z": 1.01,
+            "gyro_x": -4.11,
+            "gyro_y": 2.03,
+            "gyro_z": -3.67,
+            "heart_rate_bpm": 136.0,
+            "spo2_pct": 19.37
+        }
+    },
+    {
+        "timestamp": "2025-12-10T19:30:29.953229",
+        "readings": {
+            "body_temp": 30.5,
+            "ambient_temp": 31.6,
+            "pressure_hpa": 1007.27,
+            "humidity_pct": 73.81,
+            "accel_x": -0.17,
+            "accel_y": -0.04,
+            "accel_z": 1.04,
+            "gyro_x": 4.69,
+            "gyro_y": 7.31,
+            "gyro_z": 1.11,
+            "heart_rate_bpm": 136.0,
+            "spo2_pct": 19.37
+        }
+    },
+    {
+        "timestamp": "2025-12-10T19:30:31.954865",
+        "readings": {
+            "body_temp": 30.5,
+            "ambient_temp": 31.61,
+            "pressure_hpa": 1007.29,
+            "humidity_pct": 76.3,
+            "accel_x": -0.16,
+            "accel_y": -0.05,
+            "accel_z": 1.05,
+            "gyro_x": -1.23,
+            "gyro_y": 2.14,
+            "gyro_z": -1.44,
+            "heart_rate_bpm": 136.0,
+            "spo2_pct": 19.37
+        }
+    },
+    {
+        "timestamp": "2025-12-10T19:30:33.957031",
+        "readings": {
+            "body_temp": 30.4,
+            "ambient_temp": 31.61,
+            "pressure_hpa": 1007.26,
+            "humidity_pct": 75.01,
+            "accel_x": -0.15,
+            "accel_y": -0.03,
+            "accel_z": 1.06,
+            "gyro_x": -4.85,
+            "gyro_y": 2.07,
+            "gyro_z": 6.28,
+            "heart_rate_bpm": 136.0,
+            "spo2_pct": 19.37
+        }
+    },
+    {
+        "timestamp": "2025-12-10T19:30:35.987777",
+        "readings": {
+            "body_temp": 30.4,
+            "ambient_temp": 31.62,
+            "pressure_hpa": 1007.25,
+            "humidity_pct": 75.27,
+            "accel_x": -0.16,
+            "accel_y": -0.06,
+            "accel_z": 1.05,
+            "gyro_x": -1.03,
+            "gyro_y": 4.3,
+            "gyro_z": 2.71,
+            "heart_rate_bpm": 136.0,
+            "spo2_pct": 19.37
+        }
+    },
+    {
+        "timestamp": "2025-12-10T19:30:37.989878",
+        "readings": {
+            "body_temp": 30.4,
+            "ambient_temp": 31.62,
+            "pressure_hpa": 1007.25,
+            "humidity_pct": 74.54,
+            "accel_x": -0.12,
+            "accel_y": -0.0,
+            "accel_z": 1.07,
+            "gyro_x": 12.24,
+            "gyro_y": -5.14,
+            "gyro_z": -14.11,
+            "heart_rate_bpm": 71.0,
+            "spo2_pct": 59.49
+        }
+    },
+    {
+        "timestamp": "2025-12-10T19:30:39.991970",
+        "readings": {
+            "body_temp": 30.4,
+            "ambient_temp": 31.63,
+            "pressure_hpa": 1007.31,
+            "humidity_pct": 72.63,
+            "accel_x": -0.15,
+            "accel_y": -0.01,
+            "accel_z": 1.09,
+            "gyro_x": 6.21,
+            "gyro_y": 5.04,
+            "gyro_z": 25.67,
+            "heart_rate_bpm": 71.0,
+            "spo2_pct": 59.49
+        }
+    },
+    {
+        "timestamp": "2025-12-10T19:30:41.993787",
+        "readings": {
+            "body_temp": 30.4,
+            "ambient_temp": 31.64,
+            "pressure_hpa": 1007.3,
+            "humidity_pct": 73.43,
+            "accel_x": -0.17,
+            "accel_y": -0.04,
+            "accel_z": 1.02,
+            "gyro_x": -8.34,
+            "gyro_y": -3.59,
+            "gyro_z": 4.47,
+            "heart_rate_bpm": 88.0,
+            "spo2_pct": 77.36
+        }
+    },
+    {
+        "timestamp": "2025-12-10T19:30:43.995728",
+        "readings": {
+            "body_temp": 30.4,
+            "ambient_temp": 31.63,
+            "pressure_hpa": 1007.26,
+            "humidity_pct": 71.32,
+            "accel_x": -0.14,
+            "accel_y": -0.03,
+            "accel_z": 1.07,
+            "gyro_x": 3.64,
+            "gyro_y": -9.25,
+            "gyro_z": -12.48,
+            "heart_rate_bpm": 88.0,
+            "spo2_pct": 77.36
+        }
+    },
+    {
+        "timestamp": "2025-12-10T19:30:46.023301",
+        "readings": {
+            "body_temp": 30.4,
+            "ambient_temp": 31.63,
+            "pressure_hpa": 1007.15,
+            "humidity_pct": 71.75,
+            "accel_x": -0.09,
+            "accel_y": -0.02,
+            "accel_z": 1.0,
+            "gyro_x": 2.53,
+            "gyro_y": 2.07,
+            "gyro_z": -1.05,
+            "heart_rate_bpm": 88.0,
+            "spo2_pct": 77.36
+        }
+    },
+    {
+        "timestamp": "2025-12-10T19:30:48.025837",
+        "readings": {
+            "body_temp": 30.4,
+            "ambient_temp": 31.63,
+            "pressure_hpa": 1007.23,
+            "humidity_pct": 71.19,
+            "accel_x": -0.17,
+            "accel_y": -0.01,
+            "accel_z": 1.03,
+            "gyro_x": 5.42,
+            "gyro_y": 4.49,
+            "gyro_z": 20.43,
+            "heart_rate_bpm": 88.0,
+            "spo2_pct": 77.36
+        }
+    },
+    {
+        "timestamp": "2025-12-10T19:30:50.027556",
+        "readings": {
+            "body_temp": 30.4,
+            "ambient_temp": 31.64,
+            "pressure_hpa": 1007.19,
+            "humidity_pct": 70.84,
+            "accel_x": -0.13,
+            "accel_y": 0.02,
+            "accel_z": 1.04,
+            "gyro_x": -0.69,
+            "gyro_y": -1.85,
+            "gyro_z": -8.37,
+            "heart_rate_bpm": 55.0,
+            "spo2_pct": 99.46
+        }
+    },
+    {
+        "timestamp": "2025-12-10T19:30:52.029550",
+        "readings": {
+            "body_temp": 30.4,
+            "ambient_temp": 31.66,
+            "pressure_hpa": 1007.22,
+            "humidity_pct": 73.95,
+            "accel_x": -0.07,
+            "accel_y": -0.02,
+            "accel_z": 1.04,
+            "gyro_x": -0.76,
+            "gyro_y": 7.1,
+            "gyro_z": -3.12,
+            "heart_rate_bpm": 55.0,
+            "spo2_pct": 99.46
+        }
+    },
+    {
+        "timestamp": "2025-12-10T19:30:54.031669",
+        "readings": {
+            "body_temp": 30.3,
+            "ambient_temp": 31.66,
+            "pressure_hpa": 1007.23,
+            "humidity_pct": 74.02,
+            "accel_x": -0.06,
+            "accel_y": -0.02,
+            "accel_z": 1.05,
+            "gyro_x": 0.87,
+            "gyro_y": 0.36,
+            "gyro_z": -3.4,
+            "heart_rate_bpm": 55.0,
+            "spo2_pct": 99.46
+        }
+    },
+    {
+        "timestamp": "2025-12-10T19:30:56.060676",
+        "readings": {
+            "body_temp": 30.3,
+            "ambient_temp": 31.66,
+            "pressure_hpa": 1007.14,
+            "humidity_pct": 73.35,
+            "accel_x": -0.08,
+            "accel_y": -0.03,
+            "accel_z": 1.02,
+            "gyro_x": -1.31,
+            "gyro_y": 2.18,
+            "gyro_z": -1.19,
+            "heart_rate_bpm": 55.0,
+            "spo2_pct": 99.46
+        }
+    },
+    {
+        "timestamp": "2025-12-10T19:30:58.063024",
+        "readings": {
+            "body_temp": 30.3,
+            "ambient_temp": 31.66,
+            "pressure_hpa": 1007.19,
+            "humidity_pct": 73.69,
+            "accel_x": -0.07,
+            "accel_y": -0.03,
+            "accel_z": 1.03,
+            "gyro_x": -4.27,
+            "gyro_y": -0.97,
+            "gyro_z": -2.08,
+            "heart_rate_bpm": 37.0,
+            "spo2_pct": -1.06
+        }
+    },
+    {
+        "timestamp": "2025-12-10T19:31:00.064425",
+        "readings": {
+            "body_temp": 30.3,
+            "ambient_temp": 31.67,
+            "pressure_hpa": 1007.19,
+            "humidity_pct": 74.78,
+            "accel_x": -0.13,
+            "accel_y": 0.04,
+            "accel_z": 1.06,
+            "gyro_x": -23.48,
+            "gyro_y": 28.56,
+            "gyro_z": -21.02,
+            "heart_rate_bpm": 37.0,
+            "spo2_pct": -1.06
+        }
+    },
+    {
+        "timestamp": "2025-12-10T19:31:02.065516",
+        "readings": {
+            "body_temp": 30.2,
+            "ambient_temp": 31.67,
+            "pressure_hpa": 1007.33,
+            "humidity_pct": 73.13,
+            "accel_x": -0.19,
+            "accel_y": -0.02,
+            "accel_z": 1.01,
+            "gyro_x": -3.74,
+            "gyro_y": 5.05,
+            "gyro_z": -4.12,
+            "heart_rate_bpm": 150.0,
+            "spo2_pct": 9.44
+        }
+    },
+    {
+        "timestamp": "2025-12-10T19:31:04.068155",
+        "readings": {
+            "body_temp": 30.2,
+            "ambient_temp": 31.69,
+            "pressure_hpa": 1007.13,
+            "humidity_pct": 72.91,
+            "accel_x": -0.23,
+            "accel_y": -0.04,
+            "accel_z": 0.99,
+            "gyro_x": -2.41,
+            "gyro_y": 7.24,
+            "gyro_z": 17.23,
+            "heart_rate_bpm": 150.0,
+            "spo2_pct": 9.44
+        }
+    },
+    {
+        "timestamp": "2025-12-10T19:31:06.099398",
+        "readings": {
+            "body_temp": 30.2,
+            "ambient_temp": 31.69,
+            "pressure_hpa": 1007.14,
+            "humidity_pct": 73.27,
+            "accel_x": -0.24,
+            "accel_y": -0.12,
+            "accel_z": 1.01,
+            "gyro_x": 13.72,
+            "gyro_y": 108.05,
+            "gyro_z": -63.49,
+            "heart_rate_bpm": 125.0,
+            "spo2_pct": 97.93
+        }
+    },
+    {
+        "timestamp": "2025-12-10T19:31:08.100645",
+        "readings": {
+            "body_temp": 30.2,
+            "ambient_temp": 31.7,
+            "pressure_hpa": 1007.15,
+            "humidity_pct": 73.77,
+            "accel_x": -0.09,
+            "accel_y": -0.08,
+            "accel_z": 1.02,
+            "gyro_x": -8.22,
+            "gyro_y": -1.21,
+            "gyro_z": 2.37,
+            "heart_rate_bpm": 125.0,
+            "spo2_pct": 97.93
+        }
+    },
+    {
+        "timestamp": "2025-12-10T19:31:10.103525",
+        "readings": {
+            "body_temp": 30.2,
+            "ambient_temp": 31.72,
+            "pressure_hpa": 1007.21,
+            "humidity_pct": 72.67,
+            "accel_x": -0.04,
+            "accel_y": -0.07,
+            "accel_z": 1.01,
+            "gyro_x": 2.76,
+            "gyro_y": 0.4,
+            "gyro_z": 8.18,
+            "heart_rate_bpm": 166.0,
+            "spo2_pct": 99.66
+        }
+    },
+    {
+        "timestamp": "2025-12-10T19:31:12.104762",
+        "readings": {
+            "body_temp": 30.2,
+            "ambient_temp": 31.73,
+            "pressure_hpa": 1007.2,
+            "humidity_pct": 74.49,
+            "accel_x": -0.05,
+            "accel_y": -0.07,
+            "accel_z": 1.05,
+            "gyro_x": -6.37,
+            "gyro_y": 3.07,
+            "gyro_z": 4.97,
+            "heart_rate_bpm": 166.0,
+            "spo2_pct": 99.66
+        }
+    },
+    {
+        "timestamp": "2025-12-10T19:31:14.107251",
+        "readings": {
+            "body_temp": 30.2,
+            "ambient_temp": 31.74,
+            "pressure_hpa": 1007.21,
+            "humidity_pct": 74.92,
+            "accel_x": -0.03,
+            "accel_y": -0.07,
+            "accel_z": 1.04,
+            "gyro_x": 2.07,
+            "gyro_y": 5.79,
+            "gyro_z": -1.56,
+            "heart_rate_bpm": 93.0,
+            "spo2_pct": 45.68
+        }
+    },
+    {
+        "timestamp": "2025-12-10T19:31:16.143955",
+        "readings": {
+            "body_temp": 30.2,
+            "ambient_temp": 31.74,
+            "pressure_hpa": 1007.21,
+            "humidity_pct": 73.3,
+            "accel_x": -0.05,
+            "accel_y": -0.05,
+            "accel_z": 1.06,
+            "gyro_x": 2.34,
+            "gyro_y": 4.11,
+            "gyro_z": 0.22,
+            "heart_rate_bpm": 93.0,
+            "spo2_pct": 45.68
+        }
+    },
+    {
+        "timestamp": "2025-12-10T19:31:18.145032",
+        "readings": {
+            "body_temp": 30.2,
+            "ambient_temp": 31.75,
+            "pressure_hpa": 1007.26,
+            "humidity_pct": 74.63,
+            "accel_x": -0.1,
+            "accel_y": -0.08,
+            "accel_z": 1.04,
+            "gyro_x": -1.89,
+            "gyro_y": 2.05,
+            "gyro_z": -9.08,
+            "heart_rate_bpm": 136.0,
+            "spo2_pct": 66.8
+        }
+    },
+    {
+        "timestamp": "2025-12-10T19:31:20.147790",
+        "readings": {
+            "body_temp": 30.2,
+            "ambient_temp": 31.73,
+            "pressure_hpa": 1007.26,
+            "humidity_pct": 72.45,
+            "accel_x": -0.14,
+            "accel_y": -0.07,
+            "accel_z": 0.96,
+            "gyro_x": 3.49,
+            "gyro_y": 1.69,
+            "gyro_z": -6.64,
+            "heart_rate_bpm": 136.0,
+            "spo2_pct": 66.8
+        }
+    },
+    {
+        "timestamp": "2025-12-10T19:31:22.148877",
+        "readings": {
+            "body_temp": 30.2,
+            "ambient_temp": 31.73,
+            "pressure_hpa": 1007.2,
+            "humidity_pct": 71.49,
+            "accel_x": -0.11,
+            "accel_y": 0.0,
+            "accel_z": 1.11,
+            "gyro_x": 5.36,
+            "gyro_y": -2.73,
+            "gyro_z": 1.27,
+            "heart_rate_bpm": 136.0,
+            "spo2_pct": 66.8
+        }
+    },
+    {
+        "timestamp": "2025-12-10T19:31:24.151568",
+        "readings": {
+            "body_temp": 30.2,
+            "ambient_temp": 31.74,
+            "pressure_hpa": 1007.28,
+            "humidity_pct": 72.56,
+            "accel_x": -0.11,
+            "accel_y": -0.02,
+            "accel_z": 1.11,
+            "gyro_x": -1.24,
+            "gyro_y": 1.99,
+            "gyro_z": -3.15,
+            "heart_rate_bpm": 136.0,
+            "spo2_pct": 66.8
+        }
+    },
+    {
+        "timestamp": "2025-12-10T19:31:26.184928",
+        "readings": {
+            "body_temp": 30.2,
+            "ambient_temp": 31.76,
+            "pressure_hpa": 1007.2,
+            "humidity_pct": 74.29,
+            "accel_x": -0.11,
+            "accel_y": -0.0,
+            "accel_z": 1.02,
+            "gyro_x": -3.31,
+            "gyro_y": 2.91,
+            "gyro_z": 0.06,
+            "heart_rate_bpm": 166.0,
+            "spo2_pct": 53.3
+        }
+    },
+    {
+        "timestamp": "2025-12-10T19:31:28.187050",
+        "readings": {
+            "body_temp": 30.2,
+            "ambient_temp": 31.76,
+            "pressure_hpa": 1007.2,
+            "humidity_pct": 74.09,
+            "accel_x": -0.07,
+            "accel_y": -0.02,
+            "accel_z": 1.0,
+            "gyro_x": -3.55,
+            "gyro_y": 2.94,
+            "gyro_z": 3.13,
+            "heart_rate_bpm": 166.0,
+            "spo2_pct": 53.3
+        }
+    },
+    {
+        "timestamp": "2025-12-10T19:31:30.189196",
+        "readings": {
+            "body_temp": 30.2,
+            "ambient_temp": 31.77,
+            "pressure_hpa": 1007.26,
+            "humidity_pct": 73.13,
+            "accel_x": 0.1,
+            "accel_y": 0.06,
+            "accel_z": 1.08,
+            "gyro_x": -6.93,
+            "gyro_y": 17.63,
+            "gyro_z": 57.21,
+            "heart_rate_bpm": 88.0,
+            "spo2_pct": 30.96
+        }
+    },
+    {
+        "timestamp": "2025-12-10T19:31:32.190378",
+        "readings": {
+            "body_temp": 30.2,
+            "ambient_temp": 31.74,
+            "pressure_hpa": 1007.22,
+            "humidity_pct": 72.47,
+            "accel_x": -0.11,
+            "accel_y": 0.0,
+            "accel_z": 1.08,
+            "gyro_x": -2.62,
+            "gyro_y": 3.65,
+            "gyro_z": -2.15,
+            "heart_rate_bpm": 88.0,
+            "spo2_pct": 30.96
+        }
+    },
+    {
+        "timestamp": "2025-12-10T19:31:34.193288",
+        "readings": {
+            "body_temp": 30.2,
+            "ambient_temp": 31.74,
+            "pressure_hpa": 1007.25,
+            "humidity_pct": 70.79,
+            "accel_x": -0.08,
+            "accel_y": 0.09,
+            "accel_z": 1.15,
+            "gyro_x": 11.97,
+            "gyro_y": 26.11,
+            "gyro_z": -9.25,
+            "heart_rate_bpm": 75.0,
+            "spo2_pct": 78.62
+        }
+    },
+    {
+        "timestamp": "2025-12-10T19:31:36.233871",
+        "readings": {
+            "body_temp": 30.2,
+            "ambient_temp": 31.75,
+            "pressure_hpa": 1007.26,
+            "humidity_pct": 71.46,
+            "accel_x": -0.01,
+            "accel_y": 0.13,
+            "accel_z": 0.94,
+            "gyro_x": -5.56,
+            "gyro_y": -21.98,
+            "gyro_z": -92.85,
+            "heart_rate_bpm": 75.0,
+            "spo2_pct": 78.62
+        }
+    },
+    {
+        "timestamp": "2025-12-10T19:31:38.235097",
+        "readings": {
+            "body_temp": 30.2,
+            "ambient_temp": 31.77,
+            "pressure_hpa": 1007.26,
+            "humidity_pct": 73.21,
+            "accel_x": -0.2,
+            "accel_y": -0.07,
+            "accel_z": 0.95,
+            "gyro_x": -5.92,
+            "gyro_y": -7.69,
+            "gyro_z": -8.16,
+            "heart_rate_bpm": 37.0,
+            "spo2_pct": 98.34
+        }
+    },
+    {
+        "timestamp": "2025-12-10T19:31:40.237919",
+        "readings": {
+            "body_temp": 30.2,
+            "ambient_temp": 31.76,
+            "pressure_hpa": 1007.25,
+            "humidity_pct": 71.86,
+            "accel_x": -0.13,
+            "accel_y": -0.05,
+            "accel_z": 1.0,
+            "gyro_x": 1.71,
+            "gyro_y": 7.4,
+            "gyro_z": -24.71,
+            "heart_rate_bpm": 37.0,
+            "spo2_pct": 98.34
+        }
+    },
+    {
+        "timestamp": "2025-12-10T19:31:42.239623",
+        "readings": {
+            "body_temp": 30.2,
+            "ambient_temp": 31.75,
+            "pressure_hpa": 1007.21,
+            "humidity_pct": 71.61,
+            "accel_x": -0.66,
+            "accel_y": -0.46,
+            "accel_z": 0.72,
+            "gyro_x": -48.73,
+            "gyro_y": -22.45,
+            "gyro_z": 16.6,
+            "heart_rate_bpm": 37.0,
+            "spo2_pct": 98.34
+        }
+    },
+    {
+        "timestamp": "2025-12-10T19:31:44.240951",
+        "readings": {
+            "body_temp": 30.2,
+            "ambient_temp": 31.75,
+            "pressure_hpa": 1007.24,
+            "humidity_pct": 71.39,
+            "accel_x": -0.14,
+            "accel_y": 0.06,
+            "accel_z": 1.0,
+            "gyro_x": 7.27,
+            "gyro_y": 15.81,
+            "gyro_z": 27.98,
+            "heart_rate_bpm": 37.0,
+            "spo2_pct": 98.34
+        }
+    },
+    {
+        "timestamp": "2025-12-10T19:31:46.283250",
+        "readings": {
+            "body_temp": 30.2,
+            "ambient_temp": 31.75,
+            "pressure_hpa": 1007.24,
+            "humidity_pct": 70.77,
+            "accel_x": -0.08,
+            "accel_y": -0.21,
+            "accel_z": 1.11,
+            "gyro_x": 31.21,
+            "gyro_y": 31.25,
+            "gyro_z": -56.59,
+            "heart_rate_bpm": 107.0,
+            "spo2_pct": 98.65
+        }
+    },
+    {
+        "timestamp": "2025-12-10T19:31:48.286557",
+        "readings": {
+            "body_temp": 30.2,
+            "ambient_temp": 31.75,
+            "pressure_hpa": 1007.26,
+            "humidity_pct": 70.9,
+            "accel_x": -0.07,
+            "accel_y": 0.02,
+            "accel_z": 1.04,
+            "gyro_x": -0.66,
+            "gyro_y": 2.16,
+            "gyro_z": 0.33,
+            "heart_rate_bpm": 107.0,
+            "spo2_pct": 98.65
+        }
+    },
+    {
+        "timestamp": "2025-12-10T19:31:50.288681",
+        "readings": {
+            "body_temp": 30.2,
+            "ambient_temp": 31.75,
+            "pressure_hpa": 1007.26,
+            "humidity_pct": 71.03,
+            "accel_x": -0.07,
+            "accel_y": 0.02,
+            "accel_z": 1.04,
+            "gyro_x": -0.76,
+            "gyro_y": 2.29,
+            "gyro_z": 0.51,
+            "heart_rate_bpm": 107.0,
+            "spo2_pct": 98.65
+        }
+    },
+    {
+        "timestamp": "2025-12-10T19:31:52.291206",
+        "readings": {
+            "body_temp": 30.2,
+            "ambient_temp": 31.76,
+            "pressure_hpa": 1007.25,
+            "humidity_pct": 70.28,
+            "accel_x": -0.07,
+            "accel_y": 0.02,
+            "accel_z": 1.03,
+            "gyro_x": -0.65,
+            "gyro_y": 2.24,
+            "gyro_z": 0.34,
+            "heart_rate_bpm": 107.0,
+            "spo2_pct": 98.65
+        }
+    },
+    {
+        "timestamp": "2025-12-10T19:31:54.292591",
+        "readings": {
+            "body_temp": 30.2,
+            "ambient_temp": 31.76,
+            "pressure_hpa": 1007.2,
+            "humidity_pct": 69.97,
+            "accel_x": -0.07,
+            "accel_y": 0.02,
+            "accel_z": 1.03,
+            "gyro_x": -0.74,
+            "gyro_y": 2.27,
+            "gyro_z": 0.55,
+            "heart_rate_bpm": 107.0,
+            "spo2_pct": 98.65
+        }
+    },
+    {
+        "timestamp": "2025-12-10T19:31:56.332291",
+        "readings": {
+            "body_temp": 30.2,
+            "ambient_temp": 31.77,
+            "pressure_hpa": 1007.26,
+            "humidity_pct": 69.71,
+            "accel_x": -0.07,
+            "accel_y": 0.02,
+            "accel_z": 1.04,
+            "gyro_x": -0.8,
+            "gyro_y": 2.31,
+            "gyro_z": 0.26,
+            "heart_rate_bpm": 107.0,
+            "spo2_pct": 98.65
+        }
+    },
+    {
+        "timestamp": "2025-12-10T19:31:58.333412",
+        "readings": {
+            "body_temp": 30.2,
+            "ambient_temp": 31.76,
+            "pressure_hpa": 1007.22,
+            "humidity_pct": 69.56,
+            "accel_x": -0.07,
+            "accel_y": 0.02,
+            "accel_z": 1.03,
+            "gyro_x": -0.76,
+            "gyro_y": 2.31,
+            "gyro_z": 0.42,
+            "heart_rate_bpm": 107.0,
+            "spo2_pct": 98.65
+        }
+    },
+    {
+        "timestamp": "2025-12-10T19:32:00.336087",
+        "readings": {
+            "body_temp": 30.2,
+            "ambient_temp": 31.77,
+            "pressure_hpa": 1007.23,
+            "humidity_pct": 69.35,
+            "accel_x": -0.07,
+            "accel_y": 0.02,
+            "accel_z": 1.03,
+            "gyro_x": -0.85,
+            "gyro_y": 2.03,
+            "gyro_z": 0.47,
+            "heart_rate_bpm": 107.0,
+            "spo2_pct": 98.65
+        }
+    },
+    {
+        "timestamp": "2025-12-10T19:32:02.337382",
+        "readings": {
+            "body_temp": 30.2,
+            "ambient_temp": 31.77,
+            "pressure_hpa": 1007.2,
+            "humidity_pct": 69.24,
+            "accel_x": -0.06,
+            "accel_y": 0.02,
+            "accel_z": 1.03,
+            "gyro_x": -0.66,
+            "gyro_y": 2.21,
+            "gyro_z": 0.42,
+            "heart_rate_bpm": 107.0,
+            "spo2_pct": 98.65
+        }
+    },
+    {
+        "timestamp": "2025-12-10T19:32:04.338905",
+        "readings": {
+            "body_temp": 30.2,
+            "ambient_temp": 31.77,
+            "pressure_hpa": 1007.27,
+            "humidity_pct": 68.66,
+            "accel_x": -0.07,
+            "accel_y": 0.02,
+            "accel_z": 1.04,
+            "gyro_x": -0.61,
+            "gyro_y": 2.37,
+            "gyro_z": 0.4,
+            "heart_rate_bpm": 107.0,
+            "spo2_pct": 98.65
+        }
+    }
+]

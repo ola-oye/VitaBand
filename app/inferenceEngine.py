@@ -20,6 +20,13 @@ except ImportError:
     print("ERROR: sensor_manager.py not found! Make sure it is in the same directory.")
     sys.exit(1)
 
+#Import Machine learn inference engine (required)
+try:
+    from generic_inferenceEngine import MLModel
+except ImportError:
+    print("ERROR: generic_inferenceEngine.py not found! Make sure it is in the same directory.")
+    sys.exit(1)
+
 # Import recommendation engine (required)
 try:
     from recommendation_engine import RecommendationEngine
@@ -27,14 +34,14 @@ except ImportError:
     print("ERROR: recommendation_engine.py not found! Make sure it is in the same directory.")
     sys.exit(1)
 
-# Import MQTT publisher (optional)
+# Import MQTT publisher
 try:
     from mqtt_publisher import HealthMQTTPublisher
 except ImportError:
     print("WARNING: mqtt_publisher.py not found. MQTT publishing disabled.")
     HealthMQTTPublisher = None
 
-# Import mDNS service (optional)
+# Import mDNS service
 try:
     from mdns_service import HealthMonitorService
 except ImportError:
@@ -47,8 +54,6 @@ class ActivityMonitor:
 
     def __init__(
         self,
-        model_path: str,
-        scaler_path: str,
         mqtt_enabled: bool = True,
         mqtt_broker: str = "localhost",
         mdns_enabled: bool = True,
@@ -62,22 +67,37 @@ class ActivityMonitor:
         print("\n1) Initializing sensors...")
         try:
             self.sensor_manager = SensorManager()
-            print("   ✓ Sensor manager initialized")
+            print("  Sensor manager initialized")
         except Exception as e:
-            print(f"   ✗ Error initializing SensorManager: {e}")
+            print(f"   Error initializing SensorManager: {e}")
             raise
 
         # Load scaler & model
         print("\n2) Loading ML artifacts...")
+        base = os.path.join(os.path.dirname(__file__), "..", "model")
         try:
-            self.scaler = joblib.load(scaler_path)
-            print(f"   ✓ Scaler loaded from: {scaler_path}")
+            self.activity_model = MLModel(
+                model_path=os.path.join(base, "edge_activity_dataset_model.joblib"),
+                scaler_path=os.path.join(base, "edge_activity_dataset_scaler.joblib"),
+                label_encoder_path=os.path.join(base, "edge_activity_dataset_label_encoder.joblib"),
+                name="Activity",
+            )
 
-            self.model = joblib.load(model_path)
-            print(f"   ✓ Model loaded from: {model_path}")
+            self.physiological_model = MLModel(
+                model_path=os.path.join(base, "edge_physiological_state_dataset_model.joblib"),
+                scaler_path=os.path.join(base, "edge_physiological_state_dataset_scaler.joblib"),
+                label_encoder_path=os.path.join(base, "edge_physiological_state_dataset_label_encoder.joblib"),
+                name="Physiological",
+            )
 
+            self.risk_model = MLModel(
+                model_path=os.path.join(base, "edge_risk_severity_dataset_model.joblib"),
+                scaler_path=os.path.join(base, "edge_risk_severity_dataset_scaler.joblib"),
+                label_encoder_path=os.path.join(base, "edge_risk_severity_dataset_label_encoder.joblib"),
+                name="Risk",
+            )
         except Exception as e:
-            print(f"   ✗ Error loading model/scaler: {e}")
+            print(f" Error loading model/scaler: {e}")
             raise
 
 
@@ -85,9 +105,9 @@ class ActivityMonitor:
         print("\n3) Initializing recommendation engine...")
         try:
             self.recommendation_engine = RecommendationEngine()
-            print("   ✓ Recommendation engine ready")
+            print("  Recommendation engine ready")
         except Exception as e:
-            print(f"   ✗ Error initializing RecommendationEngine: {e}")
+            print(f"   Error initializing RecommendationEngine: {e}")
             raise
 
         # MQTT publisher
@@ -97,12 +117,12 @@ class ActivityMonitor:
             try:
                 self.mqtt_publisher = HealthMQTTPublisher(broker_host=mqtt_broker)
                 if self.mqtt_publisher.connect():
-                    print("   ✓ MQTT publisher connected")
+                    print("  MQTT publisher connected")
                 else:
-                    print("   ✗ MQTT connect failed (continuing without MQTT)")
+                    print("   MQTT connect failed (continuing without MQTT)")
                     self.mqtt_publisher = None
             except Exception as e:
-                print(f"   ✗ MQTT init error: {e}")
+                print(f"   MQTT init error: {e}")
                 self.mqtt_publisher = None
         else:
             print("\n4) MQTT publishing disabled")
@@ -120,12 +140,12 @@ class ActivityMonitor:
                     # some mDNS implementations return None/True etc.
                     started = True
                 if started:
-                    print("   ✓ mDNS advertised")
+                    print("  mDNS advertised")
                 else:
-                    print("   ✗ mDNS advertisement failed (continuing without mDNS)")
+                    print("   mDNS advertisement failed (continuing without mDNS)")
                     self.mdns_service = None
             except Exception as e:
-                print(f"   ✗ mDNS init error: {e}")
+                print(f"   mDNS init error: {e}")
                 self.mdns_service = None
         else:
             print("\n5) mDNS service disabled")
@@ -181,9 +201,8 @@ class ActivityMonitor:
         print(f"   - mDNS: {'Enabled' if self.mdns_service else 'Disabled'}")
         print("=" * 70 + "\n")
 
-    # -----------------------
-    # Sensor / prediction helpers
-    # -----------------------
+
+    # Sensor / validation / prediction / recommendation Logic
     def read_sensors(self) -> Dict[str, Any]:
         """Read all sensors and return a dictionary of sensor values."""
         return self.sensor_manager.read_all_sensors()
@@ -197,74 +216,23 @@ class ActivityMonitor:
     def predict(self, sensor_data: Dict[str, Any]) -> Dict[str, Any]:
         """
         Using the model to predict labels from sensor_data.
-
-        This function supports:
-         - Multi-output/multi-label models that return an array per sample
-         - Single-label classifiers that return scalar label (converted to dict form)
         """
         # Validate incoming data
         self._validate_sensor_data(sensor_data)
 
-        # Extract features in the exact order expected by the model
-        features = [sensor_data[feat] for feat in self.feature_names]
-        X = np.array(features, dtype=float).reshape(1, -1)
-
-        # Scale
-        X_scaled = self.scaler.transform(X)
-
-        # Predict
-        raw_pred = self.model.predict(X_scaled)
-
-        # raw_pred may be:
-        # - a 2D array (1, n_labels) for multi-label or multioutput
-        # - a 1D array (n_labels,) if model returns array per sample and we index [0]
-        # - a scalar (single label) from classic classifiers
-        # Normalize into a 1D binary-like sequence aligned with label_names
-        if isinstance(raw_pred, np.ndarray):
-            # If shape (1, n) -> take index 0
-            if raw_pred.ndim == 2 and raw_pred.shape[0] == 1:
-                preds = np.asarray(raw_pred[0])
-            elif raw_pred.ndim == 1 and raw_pred.shape[0] == len(self.label_names):
-                preds = raw_pred
-            else:
-                # Unexpected shape; try to flatten
-                preds = raw_pred.ravel()
-        else:
-            # not numpy array (scalar)
-            preds = np.array([raw_pred])
-
-        # For many multi-label models predictions are {0,1}. But the models may return probabilities.
-        # If values are floats between 0 and 1, 0.5 threshold is applied.
-        try:
-            preds_float = preds.astype(float)
-            if np.any((preds_float >= 0.0) & (preds_float <= 1.0)):
-                # convert to binary
-                binary_preds = (preds_float >= 0.5).astype(int)
-            else:
-                # likely integer labels (e.g., 0/1 or multiclass encoding)
-                binary_preds = preds_float.astype(int)
-        except Exception:
-            # fallback: treat non-convertible as zeros
-            binary_preds = np.zeros(len(self.label_names), dtype=int)
-
-        # If length mismatch, try to align by truncation/padding
-        if binary_preds.shape[0] != len(self.label_names):
-            if binary_preds.shape[0] < len(self.label_names):
-                pad = np.zeros(len(self.label_names) - binary_preds.shape[0], dtype=int)
-                binary_preds = np.concatenate([binary_preds, pad])
-            else:
-                binary_preds = binary_preds[: len(self.label_names)]
-
-        active_labels = [self.label_names[i] for i, v in enumerate(binary_preds) if int(v) == 1]
+        activity = self.activity_model.predict(sensor_data, self.feature_names)
+        physiological = self.physiological_model.predict(sensor_data, self.feature_names)
+        risk = self.risk_model.predict(sensor_data, self.feature_names)
+        
+        # Get active labels
+        active_labels = activity + physiological + risk
 
         # Prepare result dictionary
         timestamp = datetime.utcnow().isoformat() + "Z"
         result = {
             "timestamp": timestamp,
             "sensor_data": sensor_data,
-            "active_labels": active_labels,
-            "num_active": len(active_labels),
-            "all_predictions": dict(zip(self.label_names, binary_preds.tolist())),
+            "labels": active_labels,
         }
 
         # Generate natural language recommendation
@@ -272,7 +240,7 @@ class ActivityMonitor:
             recommendation = self.recommendation_engine.interpret(active_labels, sensor_data)
             result["recommendation"] = recommendation
         except Exception as e:
-            # Recommendation engine must not break the main loop
+            # Prevent Recommendation engine breaking the main loop
             result["recommendation"] = {
                 "summary": "",
                 "recommendation": "",
@@ -286,9 +254,9 @@ class ActivityMonitor:
     # Display / Logging / Publish
     def display_result(self, result: Dict[str, Any]) -> None:
         """Printing a human-friendly summary to the console."""
-        print("\n" + "=" * 70)
+        print("\n" + "_" * 70)
         print(f"MONITORING UPDATE - {result['timestamp']}")
-        print("=" * 70)
+        print("_" * 70)
 
         s = result["sensor_data"]
         print("\nSENSOR READINGS:")
@@ -301,9 +269,9 @@ class ActivityMonitor:
         print(f"  Heart Rate:   {s['heart_rate_bpm']:.0f} BPM")
         print(f"  SpO2:         {s['spo2_pct']:.1f} %")
 
-        print(f"\nDETECTED STATES ({result['num_active']}):")
-        if result["active_labels"]:
-            for label in result["active_labels"]:
+        print(f"\nDETECTED STATES ({len(result['labels'])}):")
+        if result["labels"]:
+            for label in result["labels"]:
                print(f"  🔵 {label}")
         else:
             print("  (No states detected)")
@@ -320,7 +288,7 @@ class ActivityMonitor:
 
     def monitor_continuous(self, log_file: str, poll_interval: float = 5.0) -> None:
         """
-        Continuously monitor sensors, predict, display, optionally publish, and log.
+        Continuously monitor sensors, predict, display, publish, and log.
 
         Args:
             log_file: CSV path to write logs to.
@@ -380,7 +348,7 @@ class ActivityMonitor:
 
                 # Prepare CSV row (match header)
                 rec = result.get("recommendation", {})
-                active_labels_str = ", ".join(result.get("active_labels", []))
+                active_labels_str = ", ".join(result.get("labels", []))
                 rec_msg = rec.get("summary", "")
                 priority = rec.get("priority", "normal")
 
@@ -427,28 +395,10 @@ class ActivityMonitor:
         except Exception as e:
             print(f"[WARN] mdns_service.stop() failed: {e}")
 
-
-# -----------------------
-# Main entrypoint
-# -----------------------
+# Main entrypoin
 def main():
-  
-    model_path = os.path.join(os.path.dirname(__file__), '..', 'model', 'rf_model.joblib')
-    scaler_path = os.path.join(os.path.dirname(__file__), '..', 'model', 'scaler.joblib')
-
-    # Validate artifact exist
-    missing = [p for p in (model_path, scaler_path) if not os.path.isfile(p)]
-    if missing:
-        print("\nFailed to find model/scaler files:")
-        for p in missing:
-            print(f"  - {p}")
-        print("\nMake sure you have the trained model and scaler in the 'model' directory.")
-        sys.exit(1)
-
     try:
         monitor = ActivityMonitor(
-            model_path=model_path,
-            scaler_path=scaler_path,
             mqtt_enabled=True,
             mqtt_broker="localhost",
             mdns_enabled=True,
